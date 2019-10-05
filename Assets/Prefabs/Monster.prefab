@@ -87,6 +87,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fighterState: 0
   manualVelocity: {x: 0, y: 0, z: 0}
+  approachRange: 2
   attackRange: 0.6
   attackDelay: 2
   attackApplicationDelay: 0.75

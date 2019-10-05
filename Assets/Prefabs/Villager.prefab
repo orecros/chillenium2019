@@ -81,7 +81,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5306015231698740102
 Transform:
   m_ObjectHideFlags: 0
@@ -172,8 +172,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fighterState: 0
   manualVelocity: {x: 0, y: 0, z: 0}
+  approachRange: 2
   attackRange: 1
-  attackDelay: 2
+  attackDelay: 1
   attackApplicationDelay: 0.75
   attackDamage: 1
   targetAcquisitionInterval: 1

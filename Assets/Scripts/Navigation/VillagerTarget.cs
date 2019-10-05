@@ -8,11 +8,13 @@ public class VillagerTarget : Target {
         TargetSystem.Instance.AddVillagerTarget(this);
     }
 
+    /*
     private void OnTriggerEnter(Collider other) {
         if (other.CompareTag("Villager")) {
             other.GetComponent<VillagerController>().OnEnterApproachRegion(this);
         }
     }
+    */
 
     public void DestroyThis() {
         TargetSystem.Instance.RemoveVillagerTarget(this);

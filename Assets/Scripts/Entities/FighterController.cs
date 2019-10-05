@@ -37,6 +37,7 @@ public abstract class FighterController : MonoBehaviour {
 
     public Vector3 manualVelocity;
 
+    public float approachRange;
     public float attackRange;
     public float attackDelay;
     public float attackApplicationDelay;
@@ -103,6 +104,10 @@ public abstract class FighterController : MonoBehaviour {
         if (nextTargetAcquiusitionQuery < Time.time || currentTarget == null) {
             AcquireNewTarget();
         }
+
+        if(currentTarget != null && GetDistanceToTarget() < approachRange) {
+            FighterState = State.Approaching;
+        }
     }
     void DoStateApproaching() {
 
@@ -115,21 +120,28 @@ public abstract class FighterController : MonoBehaviour {
         }
 
         // if we are close enough to our target to attack,
-        if (Vector3.Distance(transform.position, currentTarget.transform.position) < attackRange) {
+        if (GetDistanceToTarget() < attackRange) {
 
             // go to the attack state
             FighterState = State.Attacking;
             return;
         }
+        else if(GetDistanceToTarget() > approachRange) {
+            FighterState = State.Navigating;
+        }
 
         // update our manual velocity
         DoManualVelocityAdjustment();
 
-        // move towards our target
-        characterController.Move(manualVelocity * Time.deltaTime);
-
         // look at our target
         AimTowards(currentTarget.transform.position);
+
+        // move towards our target
+        characterController.Move(manualVelocity * Time.deltaTime);
+        
+        if (GetDistanceToTarget() < attackRange) {
+            FighterState = State.Approaching;
+        }
 
     }
     void DoStateAttacking() {
@@ -149,6 +161,14 @@ public abstract class FighterController : MonoBehaviour {
 
         // look at our target
         AimTowards(currentTarget.transform.position);
+
+        // if we are too far from our target to attack,
+        if (GetDistanceToTarget() > attackRange) {
+
+            // go to the approach state
+            FighterState = State.Approaching;
+            return;
+        }
     }
     void DoAttack() {
         animator.SetTrigger("Attack");
@@ -188,7 +208,10 @@ public abstract class FighterController : MonoBehaviour {
     }
     protected abstract Target FindTarget(Target currentTarget, float currentInterestLevel);
     void AimTowards(Vector3 targetPoint) {
-        //transform.rotation = Quaternion.LookRotation(targetPoint - transform.position, Vector3.up);
+        transform.rotation = Quaternion.LookRotation(targetPoint - transform.position, Vector3.up);
+    }
+    float GetDistanceToTarget() {
+        return Vector3.Distance(currentTarget.transform.position, transform.position);
     }
 
     IEnumerator DealDamageDelayed(Target target, int Damage, float Delay) {
