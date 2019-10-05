@@ -13,7 +13,7 @@ public class Interactable : MonoBehaviour {
     protected GameObject icon;
 
     protected virtual void Start() {
-        icon = Instantiate(iconPrefab, Camera.main.WorldToScreenPoint(transform.position + offset), Quaternion.identity, Canvas.canvas.transform);
+        icon = Instantiate(iconPrefab, Camera.main.WorldToScreenPoint(transform.position + offset), Quaternion.identity, GlobalCanvas.canvas.transform);
         icon.SetActive(false);
 
         selected = false;
