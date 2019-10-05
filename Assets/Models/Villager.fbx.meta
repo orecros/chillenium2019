@@ -1,26 +1,23 @@
 fileFormatVersion: 2
-guid: 6cdda62e41238714da9d0d210af54905
+guid: c856c7a4069268949b22a025821feeeb
 ModelImporter:
   serializedVersion: 26
   internalIDToNameTable:
   - first:
-      74: -287833123993104544
-    second: MedicIdle
+      74: 349054200746248903
+    second: VillagerIdle
   - first:
-      74: -5261297635379989649
-    second: MedicJump
+      74: -1710723985219418191
+    second: VillagerJump
   - first:
-      74: 3193826540577167561
-    second: MedicWeapon01
+      74: -5220491272170363549
+    second: VillagerWeapon01
   - first:
-      74: 4501109670402201061
-    second: MedicWeapon02
+      74: -6629416548161494840
+    second: VillagerWeapon02
   - first:
-      74: 8706422237773338378
-    second: MedicWeapon01 (1)
-  - first:
-      74: 6684583364710101862
-    second: MedicJump (1)
+      74: -1154141524333152902
+    second: VillagerJump (1)
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -50,8 +47,8 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: MedicIdle
-      takeName: MedicIdle
+      name: VillagerIdle
+      takeName: VillagerIdle
       internalID: 0
       firstFrame: 1
       lastFrame: 30
@@ -77,10 +74,10 @@ ModelImporter:
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 60.96
+      additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: MedicJump
-      takeName: MedicJump
+      name: VillagerJump
+      takeName: VillagerJump
       internalID: 0
       firstFrame: 31
       lastFrame: 60
@@ -108,8 +105,8 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: MedicWeapon01
-      takeName: MedicWeapon01
+      name: VillagerWeapon01
+      takeName: VillagerWeapon01
       internalID: 0
       firstFrame: 61
       lastFrame: 90
@@ -137,8 +134,8 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: MedicWeapon02
-      takeName: MedicWeapon02
+      name: VillagerWeapon02
+      takeName: VillagerWeapon02
       internalID: 0
       firstFrame: 91
       lastFrame: 120

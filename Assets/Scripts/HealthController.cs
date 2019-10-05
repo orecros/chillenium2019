@@ -13,7 +13,7 @@ public class HealthController : MonoBehaviour
         get { return health; }
         set {
             health = value;
-            print(health);
+            //print(health);
         }
     }
 

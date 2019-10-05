@@ -58,16 +58,32 @@ public class MonsterController : MonoBehaviour
     /// how interested our monster is in this target
     /// </summary>
     float currentInterestLevel = 0;
+    /// <summary>
+    /// the current weapon type
+    /// 0 = sword, 1 = club
+    /// </summary>
+    public int weaponType;
 
     NavMeshAgent navMeshAgent;
     CharacterController characterController;
+    Animator anim;
 
     // Start is called before the first frame update
     void Awake()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         characterController = GetComponent<CharacterController>();
+        try {
+            anim = GetComponent<Animator>();
+            weaponType = Mathf.Clamp(weaponType, 0, 1);
+            anim.SetInteger("WeaponType", weaponType);
+            SetWeapon();
+        } catch {
+            Debug.LogError("No Animator componenet attatched to " + name + ", deleted object.");
+            Destroy(gameObject);
+        }
         AcquireNewTarget();
+
     }
 
     public void OnEnterApproachRegion(MonsterTarget target) {
@@ -77,7 +93,15 @@ public class MonsterController : MonoBehaviour
     }
 
     private void Update() {
-        
+        // animations
+        if(characterController.velocity.magnitude >= 0.125f)
+            anim.SetBool("Moving", true);
+        else
+            anim.SetBool("Moving", false);
+        // Rotation
+        if(characterController.velocity.magnitude > 0.125f)
+            transform.rotation = Quaternion.LookRotation(characterController.velocity) * Quaternion.Euler(0, -90, 0);
+
         // state machine
         if(MonsterState == State.Navigating) {
             DoStateNavigating();
@@ -134,6 +158,7 @@ public class MonsterController : MonoBehaviour
         }
     }
     void DoAttack() {
+        anim.SetTrigger("Attack");
         currentTarget.healthController.DealDamage(attackDamage);
         nextAttackTime = Time.time + attackDelay;
     }
@@ -163,6 +188,19 @@ public class MonsterController : MonoBehaviour
             currentTarget = newTarget;
 
             navMeshAgent.destination = currentTarget.transform.position;
+        }
+    }
+
+    private void SetWeapon() {
+        switch(weaponType) {
+            case 0:
+                transform.GetChild(2).gameObject.SetActive(false);
+                break;
+            case 1:
+                transform.GetChild(1).gameObject.SetActive(false);
+                break;
+            default:
+                break;
         }
     }
 }

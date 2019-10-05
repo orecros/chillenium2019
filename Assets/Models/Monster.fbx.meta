@@ -1,26 +1,23 @@
 fileFormatVersion: 2
-guid: 6cdda62e41238714da9d0d210af54905
+guid: 751d3d440623574489fc954afa51a0ab
 ModelImporter:
   serializedVersion: 26
   internalIDToNameTable:
   - first:
-      74: -287833123993104544
-    second: MedicIdle
+      74: -1850544758647998851
+    second: MonsterIdle
   - first:
-      74: -5261297635379989649
-    second: MedicJump
+      74: 51160980843125361
+    second: MonsterJump
   - first:
-      74: 3193826540577167561
-    second: MedicWeapon01
+      74: -2446007903193116632
+    second: MonsterWeapon01
   - first:
-      74: 4501109670402201061
-    second: MedicWeapon02
+      74: -8651028968898610140
+    second: MonsterWeapon02
   - first:
-      74: 8706422237773338378
-    second: MedicWeapon01 (1)
-  - first:
-      74: 6684583364710101862
-    second: MedicJump (1)
+      74: 5309299535013608738
+    second: MonsterJump (1)
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -50,8 +47,8 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: MedicIdle
-      takeName: MedicIdle
+      name: MonsterIdle
+      takeName: MonsterIdle
       internalID: 0
       firstFrame: 1
       lastFrame: 30
@@ -77,10 +74,10 @@ ModelImporter:
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 60.96
+      additiveReferencePoseFrame: 30.96
     - serializedVersion: 16
-      name: MedicJump
-      takeName: MedicJump
+      name: MonsterJump
+      takeName: MonsterJump
       internalID: 0
       firstFrame: 31
       lastFrame: 60
@@ -108,8 +105,8 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: MedicWeapon01
-      takeName: MedicWeapon01
+      name: MonsterWeapon01
+      takeName: MonsterWeapon01
       internalID: 0
       firstFrame: 61
       lastFrame: 90
@@ -137,8 +134,8 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: MedicWeapon02
-      takeName: MedicWeapon02
+      name: MonsterWeapon02
+      takeName: MonsterWeapon02
       internalID: 0
       firstFrame: 91
       lastFrame: 120
