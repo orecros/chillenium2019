@@ -14,10 +14,12 @@ public class PlayerController : MonoBehaviour {
     private List<GameObject> interactInRange = new List<GameObject>();
     private GameObject currentInteract;
     //private bool interactBuffer;
+    [HideInInspector] public bool canAct;
 
     private void Awake() {
         // Set variables
         controller = GetComponent<CharacterController>();
+        canAct = true;
 
         // Get player number
         if(!PlayerManager.player1) {
@@ -38,26 +40,24 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void Update() {
-        if(Input.GetButtonDown("Act" + playerNum) && currentInteract != null) {
+        // Interact
+        if(canAct && Input.GetButtonDown("Act" + playerNum) && currentInteract != null) {
             currentInteract.GetComponent<Interactable>().Interact(gameObject, playerNum);
         }
+
+        // Remove objects that you can't interact with
+        for(int i = 0; i < interactInRange.Count; i++)
+            if(!interactInRange[i].GetComponent<Interactable>().canInteract)
+                interactInRange.RemoveAt(i);
+        /*foreach(GameObject obj in interactInRange)
+            if(!obj.GetComponent<Interactable>().canInteract)
+                interactInRange.Remove(obj);*/
     }
 
     private void FixedUpdate() {
-        if(playerNum == 1) { // Player 1
-            moveX = Input.GetAxis("Horizontal1");
-            moveZ = Input.GetAxis("Vertical1");
-        
-            controller.Move(new Vector3(moveX, 0, moveZ) * moveSpeed);
-        } else if(playerNum == 2) { // Player 2
-            moveX = Input.GetAxis("Horizontal2");
-            moveZ = Input.GetAxis("Vertical2");
-
-            controller.Move(new Vector3(moveX, 0, moveZ) * moveSpeed);
-        } else { // Player 2
-            moveX = Input.GetAxis("Horizontal3");
-            moveZ = Input.GetAxis("Vertical3");
-
+        if(canAct) {
+            moveX = Input.GetAxis("Horizontal" + playerNum);
+            moveZ = Input.GetAxis("Vertical" + playerNum);
             controller.Move(new Vector3(moveX, 0, moveZ) * moveSpeed);
         }
     }
@@ -85,7 +85,7 @@ public class PlayerController : MonoBehaviour {
                 }
             }
         }
-
+        
         // Interacting
         if(interactInRange.Count > 0) {
             currentInteract = FindClosestInteractable();
@@ -100,7 +100,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void OnTriggerEnter(Collider other) {
-        if(other.CompareTag("Interactable")) {
+        if(other.CompareTag("Interactable") && other.GetComponent<Interactable>().canInteract) {
             interactInRange.Add(other.gameObject);
         }
     }
@@ -115,7 +115,13 @@ public class PlayerController : MonoBehaviour {
         if(playerNum > 0)
             PlayerManager.playerCount--;
     }
+    
 
+    /// <summary>
+    /// Finds and returns the closest interactable object.
+    /// </summary>
+    /// <returns>Returns closest interactable object. 
+    /// Returns null if no interactable objects are nearby.</returns>
     private GameObject FindClosestInteractable() {
         if(interactInRange.Count == 0)
             return null;
@@ -129,6 +135,20 @@ public class PlayerController : MonoBehaviour {
             }
         }
         return current;
+    }
+
+    public IEnumerator FreezePlayer(float time) {
+        canAct = false;
+        yield return new WaitForSeconds(time);
+        canAct = true;
+    }
+
+    public bool AddInteractable(GameObject obj) {
+        if(!interactInRange.Contains(obj)) {
+            interactInRange.Add(obj);
+            return true;
+        }
+        return false;
     }
 
 }

@@ -7,21 +7,21 @@ public class Interactable : MonoBehaviour {
     public GameObject iconPrefab;
     public Vector3 offset;
 
-    [HideInInspector] public bool selected;
+    [HideInInspector] public bool canInteract, selected;
     [HideInInspector] public int playerCount;
 
     protected GameObject icon;
 
-    protected void Start() {
+    protected virtual void Start() {
         icon = Instantiate(iconPrefab, Camera.main.WorldToScreenPoint(transform.position + offset), Quaternion.identity, Canvas.canvas.transform);
         icon.SetActive(false);
 
         selected = false;
     }
 
-    protected void LateUpdate() {
+    protected virtual void LateUpdate() {
         //Debug.Log(playerCount + " " + selected);
-        if(selected && playerCount > 0)
+        if(selected && playerCount > 0 && canInteract)
             icon.SetActive(true);
         else {
             icon.SetActive(false);
@@ -29,16 +29,14 @@ public class Interactable : MonoBehaviour {
         }
     }
 
-    protected void OnTriggerEnter(Collider other) {
-        if(other.CompareTag("Player")) {
+    protected virtual void OnTriggerEnter(Collider other) {
+        if(other.CompareTag("Player"))
             playerCount++;
-        }
     }
 
-    protected void OnTriggerExit(Collider other) {
-        if(other.CompareTag("Player")) {
+    protected virtual void OnTriggerExit(Collider other) {
+        if(other.CompareTag("Player"))
             playerCount--;
-        }
     }
 
     public virtual void Interact() {
