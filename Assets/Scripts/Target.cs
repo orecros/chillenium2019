@@ -29,7 +29,7 @@ public abstract class Target : MonoBehaviour
     /// </summary>
     /// <param name="otherPosition"></param>
     /// <returns></returns>
-    public float CalculateInterest(Vector3 otherPosition) {
+    public float CalculateValue(Vector3 otherPosition) {
         float distance = Vector3.Distance(otherPosition, transform.position);
 
         if( distance > MaxDetectionRange) {
