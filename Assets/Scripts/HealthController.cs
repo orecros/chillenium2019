@@ -27,4 +27,8 @@ public class HealthController : MonoBehaviour
         return MaxHealth == Health;
     }
 
+    public int DamageAmount() {
+        return MaxHealth - Health;
+    }
+
 }

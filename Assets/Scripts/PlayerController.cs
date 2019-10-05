@@ -49,9 +49,6 @@ public class PlayerController : MonoBehaviour {
         for(int i = 0; i < interactInRange.Count; i++)
             if(!interactInRange[i].GetComponent<Interactable>().canInteract)
                 interactInRange.RemoveAt(i);
-        /*foreach(GameObject obj in interactInRange)
-            if(!obj.GetComponent<Interactable>().canInteract)
-                interactInRange.Remove(obj);*/
     }
 
     private void FixedUpdate() {
@@ -87,7 +84,7 @@ public class PlayerController : MonoBehaviour {
         }
         
         // Interacting
-        if(interactInRange.Count > 0) {
+        if(interactInRange.Count > 0 && canAct) {
             currentInteract = FindClosestInteractable();
             foreach(GameObject obj in interactInRange) {
                 if(obj == currentInteract)
