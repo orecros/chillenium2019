@@ -9,17 +9,24 @@ public class PlayerController : MonoBehaviour {
     private int playerNum;
 
     private CharacterController controller;
+    private Animator anim;
     private float moveX, moveZ, quitTimer;
+    private Vector3 moveDir;
 
     private List<GameObject> interactInRange = new List<GameObject>();
     private GameObject currentInteract;
     //private bool interactBuffer;
     [HideInInspector] public bool canAct;
 
+    private GameObject syringe, hammer;
+
     private void Awake() {
         // Set variables
         controller = GetComponent<CharacterController>();
+        anim = GetComponent<Animator>();
         canAct = true;
+        syringe = transform.GetChild(1).gameObject;
+        hammer = transform.GetChild(2).gameObject;
 
         // Get player number
         if(!PlayerManager.player1) {
@@ -49,17 +56,26 @@ public class PlayerController : MonoBehaviour {
         for(int i = 0; i < interactInRange.Count; i++)
             if(!interactInRange[i].GetComponent<Interactable>().canInteract)
                 interactInRange.RemoveAt(i);
-        /*foreach(GameObject obj in interactInRange)
-            if(!obj.GetComponent<Interactable>().canInteract)
-                interactInRange.Remove(obj);*/
+
+        // Animations
+        if(controller.velocity.magnitude > 0.125f)
+            anim.SetBool("Moving", true);
+        else
+            anim.SetBool("Moving", false);
+        // Rotation
+        if(moveDir.magnitude > 0.125f)
+            transform.rotation = Quaternion.LookRotation(moveDir) * Quaternion.Euler(0, -90, 0);
     }
 
     private void FixedUpdate() {
         if(canAct) {
             moveX = Input.GetAxis("Horizontal" + playerNum);
             moveZ = Input.GetAxis("Vertical" + playerNum);
-            controller.Move(new Vector3(moveX, 0, moveZ) * moveSpeed);
+            moveDir = new Vector3(moveX, 0, moveZ);
+            controller.Move(moveDir * moveSpeed);
         }
+
+        //transform.rotation = Quaternion.Euler(moveX * 360f, 0, moveZ * 360f);
     }
 
     private void LateUpdate() {
@@ -87,7 +103,7 @@ public class PlayerController : MonoBehaviour {
         }
         
         // Interacting
-        if(interactInRange.Count > 0) {
+        if(interactInRange.Count > 0 && canAct) {
             currentInteract = FindClosestInteractable();
             foreach(GameObject obj in interactInRange) {
                 if(obj == currentInteract)
@@ -149,6 +165,20 @@ public class PlayerController : MonoBehaviour {
             return true;
         }
         return false;
+    }
+
+    public void SetAnimTrigger(string trigger) {
+        anim.SetTrigger(trigger);
+    }
+
+    public void SwitchWeapon(bool setHammer) {
+        if(setHammer) {
+            syringe.SetActive(false);
+            hammer.SetActive(true);
+        } else {
+            syringe.SetActive(true);
+            hammer.SetActive(false);
+        }
     }
 
 }
