@@ -9,13 +9,13 @@ public class MonsterTarget : Target
         TargetSystem.Instance.AddMonsterTarget(this);
     }
 
-    public HealthController healthController;
-
+    /*
     private void OnTriggerEnter(Collider other) {
         if (other.CompareTag("Monster")) {
             other.GetComponent<MonsterController>().OnEnterApproachRegion(this);
         }
     }
+    */
 
     public void DestroyThis() {
         TargetSystem.Instance.RemoveMonsterTarget(this);

@@ -3,42 +3,44 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class MonsterController : MonoBehaviour
-{
+public abstract class FighterController : MonoBehaviour {
     public enum State {
         Navigating,
         Approaching,
         Attacking
     }
-    State monsterState;
-    public State MonsterState {
-        get { return monsterState; }
+    public State fighterState;
+    public State FighterState {
+        get { return fighterState; }
         set {
-            if (value == monsterState) return;
+            if (value == fighterState) return;
 
-            if(value == State.Navigating) {
+            if (value == State.Navigating) {
                 navMeshAgent.updatePosition = true;
                 navMeshAgent.updateRotation = true;
             }
-            else if(value == State.Attacking) {
+            else if (value == State.Attacking) {
+                animator.SetBool("Moving", false);
                 nextAttackTime = Time.time + attackDelay;
             }
 
-            if(monsterState == State.Navigating) {
+            if (fighterState == State.Navigating) {
                 navMeshAgent.updatePosition = false;
                 navMeshAgent.updateRotation = false;
                 manualVelocity = navMeshAgent.velocity;
             }
-                
 
-            monsterState = value;
+
+            fighterState = value;
         }
     }
 
     public Vector3 manualVelocity;
 
+    public float approachRange;
     public float attackRange;
     public float attackDelay;
+    public float attackApplicationDelay;
     public int attackDamage;
     float nextAttackTime;
 
@@ -53,69 +55,58 @@ public class MonsterController : MonoBehaviour
     /// <summary>
     /// our current target
     /// </summary>
-    MonsterTarget currentTarget = null;
+    Target currentTarget = null;
     /// <summary>
     /// how interested our monster is in this target
     /// </summary>
     float currentInterestLevel = 0;
-    /// <summary>
-    /// the current weapon type
-    /// 0 = sword, 1 = club
-    /// </summary>
-    public int weaponType;
 
     NavMeshAgent navMeshAgent;
     CharacterController characterController;
-    Animator anim;
+
+    public Animator animator;
 
     // Start is called before the first frame update
-    void Awake()
-    {
+    void Awake() {
         navMeshAgent = GetComponent<NavMeshAgent>();
         characterController = GetComponent<CharacterController>();
-        try {
-            anim = GetComponent<Animator>();
-            weaponType = Mathf.Clamp(weaponType, 0, 1);
-            anim.SetInteger("WeaponType", weaponType);
-            SetWeapon();
-        } catch {
-            Debug.LogError("No Animator componenet attatched to " + name + ", deleted object.");
-            Destroy(gameObject);
-        }
         AcquireNewTarget();
-
     }
 
-    public void OnEnterApproachRegion(MonsterTarget target) {
+    public void OnEnterApproachRegion(Target target) {
         if (target != currentTarget) return;
 
-        MonsterState = State.Approaching;
+        FighterState = State.Approaching;
     }
 
     private void Update() {
-        // animations
-        if(characterController.velocity.magnitude >= 0.125f)
-            anim.SetBool("Moving", true);
-        else
-            anim.SetBool("Moving", false);
-        // Rotation
-        if(characterController.velocity.magnitude > 0.125f)
-            transform.rotation = Quaternion.LookRotation(characterController.velocity) * Quaternion.Euler(0, -90, 0);
-
+        
         // state machine
-        if(MonsterState == State.Navigating) {
+        if (FighterState == State.Navigating) {
             DoStateNavigating();
+            if (navMeshAgent.velocity.magnitude >= 0.125f)
+                animator.SetBool("Moving", true);
+            else
+                animator.SetBool("Moving", false);
         }
-        else if(MonsterState == State.Approaching) {
+        else if (FighterState == State.Approaching) {
             DoStateApproaching();
+            if (characterController.velocity.magnitude >= 0.125f)
+                animator.SetBool("Moving", true);
+            else
+                animator.SetBool("Moving", false);
         }
-        else if(MonsterState == State.Attacking) {
+        else if (FighterState == State.Attacking) {
             DoStateAttacking();
         }
     }
     void DoStateNavigating() {
         if (nextTargetAcquiusitionQuery < Time.time || currentTarget == null) {
             AcquireNewTarget();
+        }
+
+        if(currentTarget != null && GetDistanceToTarget() < approachRange) {
+            FighterState = State.Approaching;
         }
     }
     void DoStateApproaching() {
@@ -124,43 +115,66 @@ public class MonsterController : MonoBehaviour
         if (currentTarget == null) {
 
             // go back to navigating
-            MonsterState = State.Navigating;
+            FighterState = State.Navigating;
             return;
         }
 
         // if we are close enough to our target to attack,
-        if (Vector3.Distance(transform.position,currentTarget.transform.position) < attackRange) {
+        if (GetDistanceToTarget() < attackRange) {
 
             // go to the attack state
-            MonsterState = State.Attacking;
+            FighterState = State.Attacking;
             return;
+        }
+        else if(GetDistanceToTarget() > approachRange) {
+            FighterState = State.Navigating;
         }
 
         // update our manual velocity
         DoManualVelocityAdjustment();
 
+        // look at our target
+        AimTowards(currentTarget.transform.position);
+
         // move towards our target
         characterController.Move(manualVelocity * Time.deltaTime);
+        
+        if (GetDistanceToTarget() < attackRange) {
+            FighterState = State.Approaching;
+        }
 
     }
     void DoStateAttacking() {
 
         // if our target is invalid go back to navigating
         if (currentTarget == null) {
-            MonsterState = State.Navigating;
+            FighterState = State.Navigating;
             return;
         }
 
         // if it's time to attack...
         if (nextAttackTime < Time.time) {
+            
             // perform an attack
             DoAttack();
         }
+
+        // look at our target
+        AimTowards(currentTarget.transform.position);
+
+        // if we are too far from our target to attack,
+        if (GetDistanceToTarget() > attackRange) {
+
+            // go to the approach state
+            FighterState = State.Approaching;
+            return;
+        }
     }
     void DoAttack() {
-        anim.SetTrigger("Attack");
-        currentTarget.healthController.DealDamage(attackDamage);
+        animator.SetTrigger("Attack");
         nextAttackTime = Time.time + attackDelay;
+
+        StartCoroutine(DealDamageDelayed(currentTarget, attackDamage, attackApplicationDelay));
     }
     void DoManualVelocityAdjustment() {
         Vector3 direction = (currentTarget.transform.position - transform.position).normalized;
@@ -182,25 +196,29 @@ public class MonsterController : MonoBehaviour
         // if our current best target was destroyed, make sure we're looking for ANY replacement target
         if (currentTarget == null) currentInterestLevel = 0;
 
-        MonsterTarget newTarget = TargetSystem.Instance.GetMonsterTarget(transform.position, currentTarget, currentInterestLevel);
-        if(newTarget != null && newTarget != currentTarget) {
-            currentInterestLevel += newTarget.CalculateInterestLevel(transform.position);
-            currentTarget = newTarget;
-
+        Target newTarget = FindTarget(currentTarget, currentInterestLevel);
+        if (newTarget != null) {
+            if (newTarget != currentTarget) {
+                currentInterestLevel += newTarget.CalculateInterestLevel(transform.position);
+                currentTarget = newTarget;
+            }
+            
             navMeshAgent.destination = currentTarget.transform.position;
         }
     }
+    protected abstract Target FindTarget(Target currentTarget, float currentInterestLevel);
+    void AimTowards(Vector3 targetPoint) {
+        transform.rotation = Quaternion.LookRotation(targetPoint - transform.position, Vector3.up);
+    }
+    float GetDistanceToTarget() {
+        return Vector3.Distance(currentTarget.transform.position, transform.position);
+    }
 
-    private void SetWeapon() {
-        switch(weaponType) {
-            case 0:
-                transform.GetChild(2).gameObject.SetActive(false);
-                break;
-            case 1:
-                transform.GetChild(1).gameObject.SetActive(false);
-                break;
-            default:
-                break;
+    IEnumerator DealDamageDelayed(Target target, int Damage, float Delay) {
+        yield return new WaitForSeconds(Delay);
+
+        if(target != null) {
+            target.healthController.DealDamage(Damage);
         }
     }
 }
