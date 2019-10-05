@@ -19,8 +19,12 @@ public class HealthController : MonoBehaviour
         Health = Mathf.Min(Health + damage, MaxHealth);
     }
 
-    void DoDeath() {
+    public void DoDeath() {
 
     }
     
+    public bool AtMax() {
+        return MaxHealth == Health;
+    }
+
 }
