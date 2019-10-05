@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour {
     private CharacterController controller;
     private Animator anim;
     private float moveX, moveZ, quitTimer;
+    private Vector3 moveDir;
 
     private List<GameObject> interactInRange = new List<GameObject>();
     private GameObject currentInteract;
@@ -61,13 +62,17 @@ public class PlayerController : MonoBehaviour {
             anim.SetBool("Moving", true);
         else
             anim.SetBool("Moving", false);
+        // Rotation
+        if(moveDir.magnitude > 0.125f)
+            transform.rotation = Quaternion.LookRotation(moveDir) * Quaternion.Euler(0, -90, 0);
     }
 
     private void FixedUpdate() {
         if(canAct) {
             moveX = Input.GetAxis("Horizontal" + playerNum);
             moveZ = Input.GetAxis("Vertical" + playerNum);
-            controller.Move(new Vector3(moveX, 0, moveZ) * moveSpeed);
+            moveDir = new Vector3(moveX, 0, moveZ);
+            controller.Move(moveDir * moveSpeed);
         }
 
         //transform.rotation = Quaternion.Euler(moveX * 360f, 0, moveZ * 360f);

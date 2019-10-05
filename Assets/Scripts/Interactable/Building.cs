@@ -31,8 +31,7 @@ public class Building : Interactable {
     }
 
     private IEnumerator InteractFreeze(GameObject player, int playerNum) {
-        Debug.Log("Repairing...");
-
+        //Debug.Log("Repairing...");
         PlayerController pc = player.GetComponent<PlayerController>();
         repairing = true;
         pc.SwitchWeapon(true);
@@ -42,12 +41,12 @@ public class Building : Interactable {
         }
 
         health.HealDamage(3);
-        yield return null;
         repairing = false;
+        yield return null;
         if(!health.AtMax())
             player.GetComponent<PlayerController>().AddInteractable(gameObject);
         pc.SwitchWeapon(false);
-        Debug.Log("Done repairing.");
+        //Debug.Log("Done repairing.");
     }
 
 }

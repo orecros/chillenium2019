@@ -26,7 +26,7 @@ public class VillagerInteract : Interactable {
     }
 
     private IEnumerator InteractFreeze(GameObject player, int playerNum) {
-        Debug.Log("Healing...");
+        //Debug.Log("Healing...");
         beingHealed = true;
         while(!health.AtMax()) {
             player.GetComponent<PlayerController>().SetAnimTrigger("Heal");
@@ -36,7 +36,7 @@ public class VillagerInteract : Interactable {
         }
         
         beingHealed = false;
-        Debug.Log("Done healing.");
+        //Debug.Log("Done healing.");
     }
 
 }
