@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour {
     private int playerNum;
 
     private CharacterController controller;
+    private Animator anim;
     private float moveX, moveZ, quitTimer;
 
     private List<GameObject> interactInRange = new List<GameObject>();
@@ -16,10 +17,15 @@ public class PlayerController : MonoBehaviour {
     //private bool interactBuffer;
     [HideInInspector] public bool canAct;
 
+    private GameObject syringe, hammer;
+
     private void Awake() {
         // Set variables
         controller = GetComponent<CharacterController>();
+        anim = GetComponent<Animator>();
         canAct = true;
+        syringe = transform.GetChild(1).gameObject;
+        hammer = transform.GetChild(2).gameObject;
 
         // Get player number
         if(!PlayerManager.player1) {
@@ -49,6 +55,12 @@ public class PlayerController : MonoBehaviour {
         for(int i = 0; i < interactInRange.Count; i++)
             if(!interactInRange[i].GetComponent<Interactable>().canInteract)
                 interactInRange.RemoveAt(i);
+
+        // Animations
+        if(controller.velocity.magnitude > 0.125f)
+            anim.SetBool("Moving", true);
+        else
+            anim.SetBool("Moving", false);
     }
 
     private void FixedUpdate() {
@@ -57,6 +69,8 @@ public class PlayerController : MonoBehaviour {
             moveZ = Input.GetAxis("Vertical" + playerNum);
             controller.Move(new Vector3(moveX, 0, moveZ) * moveSpeed);
         }
+
+        //transform.rotation = Quaternion.Euler(moveX * 360f, 0, moveZ * 360f);
     }
 
     private void LateUpdate() {
@@ -146,6 +160,20 @@ public class PlayerController : MonoBehaviour {
             return true;
         }
         return false;
+    }
+
+    public void SetAnimTrigger(string trigger) {
+        anim.SetTrigger(trigger);
+    }
+
+    public void SwitchWeapon(bool setHammer) {
+        if(setHammer) {
+            syringe.SetActive(false);
+            hammer.SetActive(true);
+        } else {
+            syringe.SetActive(true);
+            hammer.SetActive(false);
+        }
     }
 
 }

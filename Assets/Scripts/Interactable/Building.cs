@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Building : Interactable {
 
-    public static float repairTime = 1.5f;
+    public static float repairTime = 1.25f;
+    public static int repairLoopCount = 2;
 
     private HealthController health;
     private bool repairing;
@@ -31,14 +32,21 @@ public class Building : Interactable {
 
     private IEnumerator InteractFreeze(GameObject player, int playerNum) {
         Debug.Log("Repairing...");
+
+        PlayerController pc = player.GetComponent<PlayerController>();
         repairing = true;
-        yield return StartCoroutine(player.GetComponent<PlayerController>().FreezePlayer(repairTime));
+        pc.SwitchWeapon(true);
+        for(int i = 0; i < repairLoopCount; i++) {
+            pc.SetAnimTrigger("Repair");
+            yield return StartCoroutine(pc.FreezePlayer(repairTime));
+        }
 
         health.HealDamage(3);
-        repairing = false;
         yield return null;
+        repairing = false;
         if(!health.AtMax())
             player.GetComponent<PlayerController>().AddInteractable(gameObject);
+        pc.SwitchWeapon(false);
         Debug.Log("Done repairing.");
     }
 
