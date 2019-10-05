@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 5933469889043582102}
   - component: {fileID: 4568061279081683227}
   - component: {fileID: 5933469889043582105}
+  - component: {fileID: 1874790893546543286}
+  - component: {fileID: 8441511871668724785}
   m_Layer: 8
   m_Name: Monster
   m_TagString: Monster
@@ -91,6 +93,43 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.5, z: 0}
+--- !u!114 &1874790893546543286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1618591224641869415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 228a0274e4a1fc245b99aa7b610ce44b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHealthChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  MaxHealth: 2
+  health: 2
+--- !u!114 &8441511871668724785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1618591224641869415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad7f9933e0872de4489514059ca98d0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxDetectionRange: 10
+  MinimumInterest: 1
+  MaximumInterest: 2
+  InterestMultiplier: 1
+  healthController: {fileID: 1874790893546543286}
 --- !u!1001 &7459276538806040320
 PrefabInstance:
   m_ObjectHideFlags: 0

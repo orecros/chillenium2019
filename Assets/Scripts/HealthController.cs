@@ -6,14 +6,15 @@ using UnityEngine.Events;
 public class HealthController : MonoBehaviour
 {
     public UnityEvent OnDeath;
+    [HideInInspector] public UnityEvent OnHealthChanged;
 
     public int MaxHealth;
     [SerializeField] int health;
-    [HideInInspector] int Health {
+    [HideInInspector] public int Health {
         get { return health; }
         set {
             health = value;
-            print(health);
+            OnHealthChanged.Invoke();
         }
     }
 

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Interactable
   - Monster
+  - Villager
   layers:
   - Default
   - TransparentFX

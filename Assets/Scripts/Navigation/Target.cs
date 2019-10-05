@@ -39,11 +39,11 @@ public abstract class Target : MonoBehaviour
         return Mathf.Lerp(MaximumInterest,MinimumInterest,distance / MaxDetectionRange);
     }
 
-    /*
+    public HealthController healthController;
+
     private void OnDrawGizmosSelected() {
         Gizmos.color = Color.green;
         Mesh m = Resources.Load<Mesh>("Gizmos/circle");
         Gizmos.DrawWireMesh(m,transform.position,transform.rotation,Vector3.one * MaxDetectionRange);
     }
-    */
 }
