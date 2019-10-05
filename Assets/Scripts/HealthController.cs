@@ -41,5 +41,4 @@ public class HealthController : MonoBehaviour
     public int DamageAmount() {
         return MaxHealth - Health;
     }
-
 }

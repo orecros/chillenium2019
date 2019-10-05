@@ -19,19 +19,15 @@ public class HouseAnimationController : MonoBehaviour
 
         if(health == 0) {
             animator.SetInteger("HealthState", 0);
-            print(0);
         }
         else if( health <= CriticalHealthThreshold) {
             animator.SetInteger("HealthState", 1);
-            print(1);
         }
         else if( health < HouseHealthController.MaxHealth) {
             animator.SetInteger("HealthState", 2);
-            print(2);
         }
         else {
             animator.SetInteger("HealthState", 3);
-            print(3);
         }
     }
 }

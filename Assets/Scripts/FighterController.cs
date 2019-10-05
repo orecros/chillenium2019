@@ -9,7 +9,7 @@ public abstract class FighterController : MonoBehaviour {
         Approaching,
         Attacking
     }
-    State fighterState;
+    public State fighterState;
     public State FighterState {
         get { return fighterState; }
         set {
@@ -20,6 +20,7 @@ public abstract class FighterController : MonoBehaviour {
                 navMeshAgent.updateRotation = true;
             }
             else if (value == State.Attacking) {
+                animator.SetBool("Moving", false);
                 nextAttackTime = Time.time + attackDelay;
             }
 
@@ -38,6 +39,7 @@ public abstract class FighterController : MonoBehaviour {
 
     public float attackRange;
     public float attackDelay;
+    public float attackApplicationDelay;
     public int attackDamage;
     float nextAttackTime;
 
@@ -61,6 +63,8 @@ public abstract class FighterController : MonoBehaviour {
     NavMeshAgent navMeshAgent;
     CharacterController characterController;
 
+    public Animator animator;
+
     // Start is called before the first frame update
     void Awake() {
         navMeshAgent = GetComponent<NavMeshAgent>();
@@ -75,13 +79,21 @@ public abstract class FighterController : MonoBehaviour {
     }
 
     private void Update() {
-
+        
         // state machine
         if (FighterState == State.Navigating) {
             DoStateNavigating();
+            if (navMeshAgent.velocity.magnitude >= 0.125f)
+                animator.SetBool("Moving", true);
+            else
+                animator.SetBool("Moving", false);
         }
         else if (FighterState == State.Approaching) {
             DoStateApproaching();
+            if (characterController.velocity.magnitude >= 0.125f)
+                animator.SetBool("Moving", true);
+            else
+                animator.SetBool("Moving", false);
         }
         else if (FighterState == State.Attacking) {
             DoStateAttacking();
@@ -116,6 +128,9 @@ public abstract class FighterController : MonoBehaviour {
         // move towards our target
         characterController.Move(manualVelocity * Time.deltaTime);
 
+        // look at our target
+        AimTowards(currentTarget.transform.position);
+
     }
     void DoStateAttacking() {
 
@@ -127,13 +142,19 @@ public abstract class FighterController : MonoBehaviour {
 
         // if it's time to attack...
         if (nextAttackTime < Time.time) {
+            
             // perform an attack
             DoAttack();
         }
+
+        // look at our target
+        AimTowards(currentTarget.transform.position);
     }
     void DoAttack() {
-        currentTarget.healthController.DealDamage(attackDamage);
+        animator.SetTrigger("Attack");
         nextAttackTime = Time.time + attackDelay;
+
+        StartCoroutine(DealDamageDelayed(currentTarget, attackDamage, attackApplicationDelay));
     }
     void DoManualVelocityAdjustment() {
         Vector3 direction = (currentTarget.transform.position - transform.position).normalized;
@@ -156,13 +177,25 @@ public abstract class FighterController : MonoBehaviour {
         if (currentTarget == null) currentInterestLevel = 0;
 
         Target newTarget = FindTarget(currentTarget, currentInterestLevel);
-        if (newTarget != null && newTarget != currentTarget) {
-            currentInterestLevel += newTarget.CalculateInterestLevel(transform.position);
-            currentTarget = newTarget;
-
+        if (newTarget != null) {
+            if (newTarget != currentTarget) {
+                currentInterestLevel += newTarget.CalculateInterestLevel(transform.position);
+                currentTarget = newTarget;
+            }
+            
             navMeshAgent.destination = currentTarget.transform.position;
         }
     }
     protected abstract Target FindTarget(Target currentTarget, float currentInterestLevel);
+    void AimTowards(Vector3 targetPoint) {
+        //transform.rotation = Quaternion.LookRotation(targetPoint - transform.position, Vector3.up);
+    }
 
+    IEnumerator DealDamageDelayed(Target target, int Damage, float Delay) {
+        yield return new WaitForSeconds(Delay);
+
+        if(target != null) {
+            target.healthController.DealDamage(Damage);
+        }
+    }
 }

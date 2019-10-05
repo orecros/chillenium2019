@@ -18,7 +18,20 @@ ModelImporter:
   - first:
       74: 5309299535013608738
     second: MonsterJump (1)
-  externalObjects: {}
+  - first:
+      74: 2928115657273020181
+    second: MonsterWeapon
+  externalObjects:
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Club
+    second: {fileID: 2800000, guid: 2637a76cb606dce42a0e87166a136e6a, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Sword
+    second: {fileID: 2800000, guid: ba1fee63ad0341146adc1b3f06cf98e0, type: 3}
   materials:
     importMaterials: 1
     materialName: 0
@@ -105,40 +118,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: MonsterWeapon01
-      takeName: MonsterWeapon01
+      name: MonsterWeapon
+      takeName: MonsterWeapon
       internalID: 0
       firstFrame: 61
       lastFrame: 90
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: MonsterWeapon02
-      takeName: MonsterWeapon02
-      internalID: 0
-      firstFrame: 91
-      lastFrame: 120
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
