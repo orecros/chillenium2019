@@ -67,11 +67,13 @@ public class GameManager : MonoBehaviour {
         if(scene.Equals("")) {
             scene = "Field0" + Random.Range(1, 4);
         }
+        PlayerManager.ResetPlayers();
         SceneManager.LoadScene(scene);
     }
 
     public void LoadScene(string scene) {
         LoadSceneStatic(scene);
+        PlayerManager.ResetPlayers();
     }
 
     public void RegisterObjective(HealthController objective, ObjectiveMarker.Type type) {
