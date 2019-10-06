@@ -544,8 +544,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 915252892}
-  resume: {fileID: 0}
-  mainMenu: {fileID: 0}
+  resume: {fileID: 1709339679}
+  mainMenu: {fileID: 943287488}
 --- !u!114 &341636874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1390,6 +1390,12 @@ Transform:
   m_Father: {fileID: 596905886}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &943287488 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6640085059361335910, guid: 0b2840b8e86cbe0498923e8f61804bb4,
+    type: 3}
+  m_PrefabInstance: {fileID: 915252891}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1090296367
 GameObject:
   m_ObjectHideFlags: 0
@@ -1509,6 +1515,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4485834084945428526, guid: f73bc4b5869fb0c4a841789a9ed2667b,
     type: 3}
   m_PrefabInstance: {fileID: 1815799810}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1709339679 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7934159648902889871, guid: 0b2840b8e86cbe0498923e8f61804bb4,
+    type: 3}
+  m_PrefabInstance: {fileID: 915252891}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1815799810
 PrefabInstance:
