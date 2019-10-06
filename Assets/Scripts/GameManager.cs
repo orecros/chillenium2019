@@ -7,11 +7,13 @@ public class GameManager : MonoBehaviour {
     
     private static bool paused;
     public static GameManager Instance;
-    List<HealthController> Objectives;
+    List<HealthController> Houses;
+    List<HealthController> Players;
 
     private void Awake() {
         Instance = this;
-        Objectives = new List<HealthController>();
+        Houses = new List<HealthController>();
+        Players = new List<HealthController>();
     }
 
     private void Start() {
@@ -59,19 +61,37 @@ public class GameManager : MonoBehaviour {
         SceneManager.LoadScene(scene);
     }
 
-    public void RegisterObjective(HealthController objective) {
-        Objectives.Add(objective);
+    public void RegisterObjective(HealthController objective, ObjectiveMarker.Type type) {
+        if(type == ObjectiveMarker.Type.House) {
+            Houses.Add(objective);
+        }
+        else {
+            Players.Add(objective);
+        }
     }
 
-    public void MarkObjectiveLost(HealthController objective) {
-        Objectives.Remove(objective);
-        
-        if(Objectives.Count == 0) {
-            DoDefeat();
+    public void MarkObjectiveLost(HealthController objective, ObjectiveMarker.Type type) {
+        if (type == ObjectiveMarker.Type.House) {
+            Houses.Remove(objective);
+
+            if (Houses.Count == 0) {
+                DoDefeat();
+            }
+        }
+        else {
+            Players.Remove(objective);
+
+            if (Players.Count == 0) {
+                DoDefeat();
+            }
         }
     }
 
     public void DoDefeat() {
         print("the players lose :(");
+        MonsterSpawner.Instance.chanceTimer = 0.5f;
+        MonsterSpawner.Instance.spawnRate = 100f;
+
+
     }
 }

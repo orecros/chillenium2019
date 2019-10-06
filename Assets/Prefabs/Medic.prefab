@@ -33,6 +33,7 @@ GameObject:
   - component: {fileID: 5179445997728429953}
   - component: {fileID: 1363205989852318083}
   - component: {fileID: 3143820217318479727}
+  - component: {fileID: 4706795412188020820}
   m_Layer: 12
   m_Name: Medic
   m_TagString: Player
@@ -124,7 +125,7 @@ MonoBehaviour:
   solidsList: {fileID: 2786106013496173824}
   LiquidPrefab: {fileID: 6160023988064111516, guid: 0a0135f54b5e8bb45ba633e695344b4f,
     type: 3}
-  DeathSound: {fileID: 0}
+  DeathSound: {fileID: 8300000, guid: c8d403d026ec95149ab4ca82377dc77f, type: 3}
 --- !u!114 &2786106013496173824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -223,6 +224,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 4706795412188020820}
+        m_MethodName: MarkObjectiveLost
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnHealthChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -252,6 +264,19 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 14b307b449374b940991153ea787edaa, type: 3}
   - {fileID: 21300000, guid: 4cc0a712036ce774daa868a2c6abc771, type: 3}
   - {fileID: 21300000, guid: 15dabaa12225ae84f9e0d89e266d2c21, type: 3}
+--- !u!114 &4706795412188020820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7623390560638246676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c28bb9be3eb26954dbd69db34af4579f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectiveType: 0
 --- !u!1001 &606750345011721339
 PrefabInstance:
   m_ObjectHideFlags: 0

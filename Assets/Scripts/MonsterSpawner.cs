@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MonsterSpawner : MonoBehaviour {
 
+    public static MonsterSpawner Instance;
     public GameObject monster;
     public float waitTime, chanceTimer, spawnRate;
     public int initialSpawnAmount;
@@ -13,6 +14,7 @@ public class MonsterSpawner : MonoBehaviour {
     private int random;
 
     private void Start() {
+        Instance = this;
         for(int i = 0; i < initialSpawnAmount; i++)
             SpawnMonster();
         StartCoroutine(Spawning());
