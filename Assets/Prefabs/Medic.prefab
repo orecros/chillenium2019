@@ -32,7 +32,8 @@ GameObject:
   - component: {fileID: 2786106013496173824}
   - component: {fileID: 5179445997728429953}
   - component: {fileID: 1363205989852318083}
-  - component: {fileID: 3143820217318479727}
+  - component: {fileID: 1954019367}
+  - component: {fileID: 1954019368}
   m_Layer: 0
   m_Name: Medic
   m_TagString: Player
@@ -105,6 +106,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 0.15
+  healthBarPrefab: {fileID: 5512496416199433027, guid: c424702e3709c60418793b64e575fb64,
+    type: 3}
+  healthBars:
+  - {fileID: 21300000, guid: 14b307b449374b940991153ea787edaa, type: 3}
+  - {fileID: 21300000, guid: 4cc0a712036ce774daa868a2c6abc771, type: 3}
+  - {fileID: 21300000, guid: 15dabaa12225ae84f9e0d89e266d2c21, type: 3}
   canAct: 0
   syringe: {fileID: 5420949081044378639}
   hammer: {fileID: 4397322531201423825}
@@ -212,23 +219,25 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 3143820217318479727}
-        m_MethodName: DestroyHealthBar
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
   OnHealthChanged:
     m_PersistentCalls:
       m_Calls: []
   MaxHealth: 3
   health: 3
---- !u!114 &3143820217318479727
+--- !u!135 &1954019367
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7623390560638246676}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1
+  m_Center: {x: 0, y: 0.5, z: 0}
+--- !u!114 &1954019368
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -237,21 +246,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 7623390560638246676}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e7bb1990fa9a9e4f835e8ca94b2af7b, type: 3}
+  m_Script: {fileID: 11500000, guid: e21f971e58980bf448a95cfe7d3c9300, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   iconPrefab: {fileID: 3633524236573020252, guid: 683d789e3995a014484f74e24aa45b4b,
     type: 3}
-  offset: {x: 0, y: 0, z: 0}
+  offset: {x: 0, y: 1.5, z: 0}
   canInteract: 0
   selected: 0
   playerCount: 0
-  healthBarPrefab: {fileID: 5512496416199433027, guid: c424702e3709c60418793b64e575fb64,
-    type: 3}
-  healthBars:
-  - {fileID: 21300000, guid: 14b307b449374b940991153ea787edaa, type: 3}
-  - {fileID: 21300000, guid: 4cc0a712036ce774daa868a2c6abc771, type: 3}
-  - {fileID: 21300000, guid: 15dabaa12225ae84f9e0d89e266d2c21, type: 3}
 --- !u!1001 &606750345011721339
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -266,16 +269,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -6855062863988604957, guid: a37be5b22610ba64897593cbcf2805f4,
         type: 3}
-      propertyPath: m_IsActive
-      value: 0
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: -6855062863988604957, guid: a37be5b22610ba64897593cbcf2805f4,
         type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: -5426758703216422906, guid: a37be5b22610ba64897593cbcf2805f4,
-        type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -283,6 +281,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: -5426758703216422906, guid: a37be5b22610ba64897593cbcf2805f4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: a37be5b22610ba64897593cbcf2805f4,
         type: 3}
@@ -373,13 +376,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5130276663628583828, guid: 6cdda62e41238714da9d0d210af54905,
         type: 3}
-      propertyPath: m_IsActive
-      value: 0
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 5130276663628583828, guid: 6cdda62e41238714da9d0d210af54905,
         type: 3}
-      propertyPath: m_Layer
-      value: 9
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -5688294212379169206, guid: 6cdda62e41238714da9d0d210af54905,
         type: 3}
@@ -458,16 +461,11 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: b25d1183a92374145a2472de7e0f4cf4, type: 2}
     - target: {fileID: 3970871132311529392, guid: 6cdda62e41238714da9d0d210af54905,
         type: 3}
-      propertyPath: m_IsActive
-      value: 0
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 3970871132311529392, guid: 6cdda62e41238714da9d0d210af54905,
         type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 1745447579936222232, guid: 6cdda62e41238714da9d0d210af54905,
-        type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -475,6 +473,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1745447579936222232, guid: 6cdda62e41238714da9d0d210af54905,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -3542004047730932455, guid: 6cdda62e41238714da9d0d210af54905,
         type: 3}
@@ -486,11 +489,6 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: df2242b192c5d6049bf6761f3f63c410, type: 2}
-    - target: {fileID: 1371100971332620498, guid: 6cdda62e41238714da9d0d210af54905,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1371100971332620498, guid: 6cdda62e41238714da9d0d210af54905,
         type: 3}
       propertyPath: m_Materials.Array.data[0]

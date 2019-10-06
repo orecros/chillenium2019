@@ -40,7 +40,8 @@ public class Building : Interactable {
             yield return StartCoroutine(pc.FreezePlayer(repairTime));
         }
 
-        health.HealDamage(3);
+        if(!health.IsDead())
+            health.HealDamage(3);
         repairing = false;
         yield return null;
         if(!health.AtMax())

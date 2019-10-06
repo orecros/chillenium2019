@@ -1,10 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour {
     
     public float moveSpeed = 0.15f;
+
+    public GameObject healthBarPrefab;
+    public Sprite[] healthBars = new Sprite[3];
+    private Image healthBar;
+    private HealthController health;
 
     private int playerNum;
 
@@ -44,6 +50,12 @@ public class PlayerController : MonoBehaviour {
             PlayerManager.playerCount++;
     }
 
+    private void Start() {
+        // Health Bar
+        health = GetComponent<HealthController>();
+        healthBar = Instantiate(healthBarPrefab, Camera.main.WorldToScreenPoint(transform.position + new Vector3(0, 1.5f)), Quaternion.identity, GlobalCanvas.canvas.transform).GetComponent<Image>();
+    }
+
     private void Update() {
         // Interact
         if(canAct && Input.GetButtonDown("Act" + playerNum) && currentInteract != null) {
@@ -51,7 +63,7 @@ public class PlayerController : MonoBehaviour {
         }
 
         // Remove objects that you can't interact with
-        for(int i = 0; i < interactInRange.Count; i++)
+        for(int i = 0; i < interactInRange.Count && interactInRange[i] != null; i++)
             if(!interactInRange[i].GetComponent<Interactable>().canInteract)
                 interactInRange.RemoveAt(i);
 
@@ -111,21 +123,40 @@ public class PlayerController : MonoBehaviour {
             }
         } else
             currentInteract = null;
+
+        // Health Bar
+        healthBar.GetComponent<RectTransform>().position = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0, 1.5f));
+        switch(health.Health) {
+            case 3:
+                healthBar.sprite = healthBars[2];
+                break;
+            case 2:
+                healthBar.sprite = healthBars[1];
+                break;
+            case 1:
+                healthBar.sprite = healthBars[0];
+                break;
+            default:
+                Destroy(healthBar.gameObject);
+                break;
+        }
     }
 
     private void OnTriggerEnter(Collider other) {
-        if((other.CompareTag("Interactable") || other.CompareTag("Villager")) && other.GetComponent<Interactable>().canInteract) {
+        if((other.CompareTag("Interactable") || other.CompareTag("Villager") || (other.CompareTag("Player") && other.gameObject != gameObject)) && other.GetComponent<Interactable>().canInteract) {
             interactInRange.Add(other.gameObject);
         }
     }
 
     private void OnTriggerExit(Collider other) {
-        if(other.CompareTag("Interactable") || other.CompareTag("Villager")) {
+        if(other.CompareTag("Interactable") || other.CompareTag("Villager") || (other.CompareTag("Player") && other.gameObject != gameObject)) {
             interactInRange.Remove(other.gameObject);
         }
     }
 
     private void OnDestroy() {
+        if(healthBar != null)
+            Destroy(healthBar.gameObject);
         if(playerNum > 0)
             PlayerManager.playerCount--;
     }
@@ -143,6 +174,11 @@ public class PlayerController : MonoBehaviour {
         GameObject current = interactInRange[0];
         float distance = Mathf.Infinity;
         foreach(GameObject obj in interactInRange) {
+            if(obj == null) {
+                interactInRange.Remove(obj);
+                return null;
+            }
+
             if(Vector3.Distance(transform.position, obj.transform.position) < distance) {
                 current = obj;
                 distance = Vector3.Distance(transform.position, obj.transform.position);

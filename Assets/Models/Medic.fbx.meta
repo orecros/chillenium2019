@@ -21,6 +21,9 @@ ModelImporter:
   - first:
       74: 6684583364710101862
     second: MedicJump (1)
+  - first:
+      74: 6149728236454747623
+    second: MedicWeapon
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -108,8 +111,8 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: MedicWeapon01
-      takeName: MedicWeapon01
+      name: MedicWeapon
+      takeName: MedicWeapon
       internalID: 0
       firstFrame: 61
       lastFrame: 90
