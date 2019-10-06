@@ -45,8 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxDetectionRange: 3
-  MinimumInterest: 2
-  MaximumInterest: 3
+  MinimumInterest: 3
+  MaximumInterest: 5
   InterestMultiplier: 1
   healthController: {fileID: 3770701645051918669}
 --- !u!135 &4706718735028499756
@@ -284,10 +284,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnHurt:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 9082317883072205851}
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnHealed:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5850340671557263510}
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnDeath:
     m_PersistentCalls:
       m_Calls:
@@ -359,7 +381,7 @@ MonoBehaviour:
   attackDelay: 1
   attackApplicationDelay: 0.75
   attackDamage: 1
-  targetAcquisitionInterval: 1
+  targetAcquisitionInterval: 0.25
   animator: {fileID: 310149862116991638}
 --- !u!114 &4247966043983365135
 MonoBehaviour:

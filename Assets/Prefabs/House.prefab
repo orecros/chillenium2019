@@ -624,7 +624,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxDetectionRange: 20
-  MinimumInterest: 1
+  MinimumInterest: 0.1
   MaximumInterest: 2
   InterestMultiplier: 1
   healthController: {fileID: 14099457904515788}
@@ -686,7 +686,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxDetectionRange: 20
-  MinimumInterest: 1
+  MinimumInterest: 0.1
   MaximumInterest: 2
   InterestMultiplier: 1
   healthController: {fileID: 14099457904515788}
@@ -825,7 +825,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxDetectionRange: 20
-  MinimumInterest: 1
+  MinimumInterest: 0.1
   MaximumInterest: 2
   InterestMultiplier: 1
   healthController: {fileID: 14099457904515788}
@@ -887,7 +887,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxDetectionRange: 20
-  MinimumInterest: 1
+  MinimumInterest: 0.1
   MaximumInterest: 2
   InterestMultiplier: 1
   healthController: {fileID: 14099457904515788}

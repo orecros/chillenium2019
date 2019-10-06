@@ -33,7 +33,7 @@ GameObject:
   - component: {fileID: 5179445997728429953}
   - component: {fileID: 1363205989852318083}
   - component: {fileID: 3143820217318479727}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Medic
   m_TagString: Player
   m_Icon: {fileID: 0}

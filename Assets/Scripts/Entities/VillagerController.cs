@@ -20,7 +20,7 @@ public class VillagerController : FighterController {
         }
     }
 
-    protected override Target FindTarget(Target currentTarget, float currentInterestLevel) {
-        return TargetSystem.Instance.GetVillagerTarget(transform.position, currentTarget as VillagerTarget, currentInterestLevel);
+    protected override Target FindTarget(Target currentTarget) {
+        return TargetSystem.Instance.GetVillagerTarget(transform.position, currentTarget as VillagerTarget);
     }
 }

@@ -25,9 +25,14 @@ public class TargetSystem : MonoBehaviour
     public void RemoveMonsterTarget(MonsterTarget oldTarget) {
         MonsterTargets.Remove(oldTarget);
     }
-    public MonsterTarget GetMonsterTarget(Vector3 monsterLocation, MonsterTarget currentBestTarget = null, float currentInterestLevel = 0) {
+    public MonsterTarget GetMonsterTarget(Vector3 monsterLocation, MonsterTarget currentBestTarget = null) {
 
-        foreach(MonsterTarget m in MonsterTargets) {
+        float currentInterestLevel = 0;
+        if(currentBestTarget) { 
+            currentInterestLevel = GetTargetBaseInterest(monsterLocation, currentBestTarget) * 2;
+        }
+
+        foreach (MonsterTarget m in MonsterTargets) {
             float score = GetTargetBaseInterest(monsterLocation, m);
             if(score > currentInterestLevel) {
                 currentInterestLevel = score;
@@ -48,7 +53,13 @@ public class TargetSystem : MonoBehaviour
     public void RemoveVillagerTarget(VillagerTarget oldTarget) {
         VillagerTargets.Remove(oldTarget);
     }
-    public VillagerTarget GetVillagerTarget(Vector3 villagerLocation, VillagerTarget currentBestTarget = null, float currentInterestLevel = 0) {
+    public VillagerTarget GetVillagerTarget(Vector3 villagerLocation, VillagerTarget currentBestTarget = null) {
+
+        float currentInterestLevel = 0;
+        if (currentBestTarget) {
+            currentInterestLevel = GetTargetBaseInterest(villagerLocation, currentBestTarget) * 2;
+        }
+
 
         foreach (VillagerTarget m in VillagerTargets) {
             float score = GetTargetBaseInterest(villagerLocation, m);
