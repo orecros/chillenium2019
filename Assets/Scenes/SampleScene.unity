@@ -202,6 +202,11 @@ PrefabInstance:
       propertyPath: MaximumInterest
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 5179445997728429953, guid: 10f8446e7b86ba145a48e0ea12886d82,
+        type: 3}
+      propertyPath: MaxDetectionRange
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10f8446e7b86ba145a48e0ea12886d82, type: 3}
 --- !u!4 &109924596 stripped
@@ -524,11 +529,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Villager (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 4046138390870079388, guid: 461fa970e4bc26845b87445f7ab2a0eb,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5306015231698740102, guid: 461fa970e4bc26845b87445f7ab2a0eb,
         type: 3}
