@@ -1,0 +1,510 @@
+[33mcommit 8cb2ea72dd8b7eee33702663045db2c7438d7237[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: ORECROS\Drew <orecros@gmail.com>
+Date:   Sun Oct 6 17:04:20 2019 -0500
+
+    bug fixes
+
+[33mcommit 1430afce8763783ded3309affe9487ff63430af2[m
+Author: ORECROS\Drew <orecros@gmail.com>
+Date:   Sun Oct 6 16:33:33 2019 -0500
+
+    Added music. rebalanced sound. fixed the dreaded bow bug, fixed the even more dreaded floating guy bug
+
+[33mcommit 66ade5f2de82b5009f16cebf44336c8d32836d1c[m[33m ([m[1;31morigin/drew-ai[m[33m, [m[1;32mdrew-ai[m[33m)[m
+Merge: 1d6dc62 7043044
+Author: ORECROS\Drew <orecros@gmail.com>
+Date:   Sun Oct 6 16:01:32 2019 -0500
+
+    Merge remote-tracking branch 'origin/gameplay' into drew-ai
+
+[33mcommit 1d6dc62c58906b3206948ab37a580d20252542af[m
+Author: ORECROS\Drew <orecros@gmail.com>
+Date:   Sun Oct 6 16:01:10 2019 -0500
+
+    added medic repair/heal progress bar
+
+[33mcommit 4360ee4b1748e5d61c927518b7eb41e056a5c12d[m
+Author: ORECROS\Drew <orecros@gmail.com>
+Date:   Sun Oct 6 15:33:06 2019 -0500
+
+    added game over screen. fixed house falling apart bug
+
+[33mcommit 704304462141372cee06b76ad6d2c32c718515da[m
+Author: Bill Dang <sparkfire.ffs@gmail.com>
+Date:   Sun Oct 6 15:32:44 2019 -0500
+
+    Fixed soft locking from enemies getting stuck
+
+[33mcommit 6742e90c4e9caf308d75fdc95c92c8e6894de70f[m
+Author: Bill Dang <sparkfire.ffs@gmail.com>
+Date:   Sun Oct 6 15:26:56 2019 -0500
+
+    Icon updates; balance changes
+    
+    Healing is faster and stronger
+
+[33mcommit 4e71b5f7627a116f168427fe80d06ec9b75361cc[m
+Merge: 2a66de6 9f6d008
+Author: ORECROS\Drew <orecros@gmail.com>
+Date:   Sun Oct 6 14:59:11 2019 -0500
+
+    Merge branch 'gameplay' into drew-ai
+    
+    # Conflicts:
+    #       Assets/Scenes/Field01.unity
+
+[33mcommit 2a66de681fbcac6946dd42361aae7d8248fa6a5e[m
+Author: ORECROS\Drew <orecros@gmail.com>
+Date:   Sun Oct 6 14:58:22 2019 -0500
+
+    added house 2
+
+[33mcommit 9f6d008de49ab0687cca74e0fe796b4e9dc4ae0d[m[33m ([m[1;32mgameplay[m[33m)[m
+Author: Bill Dang <sparkfire.ffs@gmail.com>
+Date:   Sun Oct 6 14:52:08 2019 -0500
+
+    Added game over screen; added/fixed screen transitions
+
+[33mcommit e41b0953489ffd99883be80cf976bf397a246c10[m
+Author: Bill Dang <sparkfire.ffs@gmail.com>
+Date:   Sun Oct 6 14:02:31 2019 -0500
+
+    Merge fixes
+
+[33mcommit 90a9cc928ec2e01a466462c160a2b08d35111392[m
+Merge: e2f5cfe 95e5453
+Author: Bill Dang <sparkfire.ffs@gmail.com>
+Date:   Sun Oct 6 13:50:28 2019 -0500
+
+    Merge remote-tracking branch 'origin/drew-ai' into gameplay
+
+[33mcommit e2f5cfefb882a181b7c9b82320f15452e73e40ce[m
+Author: Bill Dang <sparkfire.ffs@gmail.com>
+Date:   Sun Oct 6 13:50:20 2019 -0500
+
+    Added UI to main menu
+
+[33mcommit 95e5453714ec0da921494a3dc10edbbd385cdbfa[m
+Merge: a529277 33ecfce
+Author: ORECROS\Drew <orecros@gmail.com>
+Date:   Sun Oct 6 13:20:37 2019 -0500
+
+    Merge remote-tracking branch 'origin/gameplay' into drew-ai
+    
+    # Conflicts:
+    #       Assets/Prefabs/Medic.prefab
+    #       Assets/Prefabs/Villager.prefab
+    #       Assets/Scripts/Entities/MonsterController.cs
+    #       Assets/Scripts/MonsterSpawner.cs
+    #       Assets/Scripts/PlayerController.cs
+
+[33mcommit 33ecfcefb064b87b2b6828d7ae778059b4829cf2[m
+Author: Bill Dang <sparkfire.ffs@gmail.com>
+Date:   Sun Oct 6 12:55:11 2019 -0500
+
+    Changed spawn rate; villager count changes on player leave and exit
+
+[33mcommit a529277caedb446df8e0ff57a2f0da5462bbbb06[m
+Author: ORECROS\Drew <orecros@gmail.com>
+Date:   Sun Oct 6 12:46:50 2019 -0500
+
+    Set up win condition. Added medic death sound
+
+[33mcommit 58f5d7596d96259f9a48e056a173c56147d761d3[m
+Author: ORECROS\Drew <orecros@gmail.com>
+Date:   Sun Oct 6 12:23:47 2019 -0500
+
+    Added edge colliders to every scene
+
+[33mcommit 061b628117854acd6f36d82e189637bca4be55bd[m
+Author: Bill Dang <sparkfire.ffs@gmail.com>
+Date:   Sun Oct 6 11:57:45 2019 -0500
+
+    Players can heal each other; fixed player animations; added player health bars
+
+[33mcommit 966d43ce44b3e90a0817963cb76e95e264a69136[m
+Author: ORECROS\Drew <orecros@gmail.com>
+Date:   Sun Oct 6 11:15:37 2019 -0500
+
+    Changed target acquisition so if the player runs away the monsters lose interest
+
+[33mcommit 22394a4857a77737daf06da825ec1ce74bdfa41c[m
+Merge: 084968c 93136a2
+Author: Bill Dang <sparkfire.ffs@gmail.com>
+Date:   Sun Oct 6 10:53:47 2019 -0500
+
+    Merge remote-tracking branch 'origin/drew-ai' into gameplay
+
+[33mcommit 93136a2685cd9ac978daf03aae51935538d2d943[m
+Author: ORECROS\Drew <orecros@gmail.com>
+Date:   Sun Oct 6 10:53:34 2019 -0500
+
+    added medic health bar. bug fixes
+
+[33mcommit 084968c0a1958ca201bc44ac7eb4dd78ad01eab5[m
+Merge: 8fb6802 b930106
+Author: Bill Dang <sparkfire.ffs@gmail.com>
+Date:   Sun Oct 6 10:36:35 2019 -0500
+
+    Merge remote-tracking branch 'origin/drew-ai' into gameplay
+
+[33mcommit b930106364fff8d58bf478cb95dda4598e661690[m
+Merge: f63f1f7 8fb6802
+Author: ORECROS\Drew <orecros@gmail.com>
+Date:   Sun Oct 6 10:22:41 2019 -0500
+
+    Merge branch 'master' into drew-ai
+    
+    # Conflicts:
+    #       Assets/Scenes/Field01.unity - resolved using master's version
+
+[33mcommit f63f1f74becdfcc54a4bb1f280b8d0d2fc954ff2[m
+Author: ORECROS\Drew <orecros@gmail.com>
+Date:   Sun Oct 6 10:21:25 2019 -0500
+
+    fixed villager health bars
+
+[33mcommit ac96d4eae666665b3ba90cb7553429554890a1ff[m
+Author: ORECROS\Drew <orecros@gmail.com>
+Date:   Sun Oct 6 10:15:45 2019 -0500
+
+    Added Sound Effects
+
+[33mcommit 8fb6802cc9a4ee29c3cd4122bca797e2cae3d5ba[m
+Author: Bill Dang <sparkfire.ffs@gmail.com>
+Date:   Sun Oct 6 01:31:26 2019 -0500
+
+    Added field 3
+
+[33mcommit a115cfc5de897a6577730cb312e925def66ae8b1[m
+Author: Bill Dang <sparkfire.ffs@gmail.com>
+Date:   Sun Oct 6 01:19:36 2019 -0500
+
+    Added rotating camera to main menu
+
+[33mcommit bc4128d755f34ca4bd51328e0d485516e5009b55[m
+Author: Bill Dang <sparkfire.ffs@gmail.com>
+Date:   Sun Oct 6 01:00:53 2019 -0500
+
+    Finished field 1 and added field 2
+
+[33mcommit 3e74af21039f6ecdd5d4f01be55f1106bdca05ea[m
+Merge: 9cbe379 d0b4fd0
+Author: ORECROS\Drew <orecros@gmail.com>
+Date:   Sun Oct 6 00:40:15 2019 -0500
+
+    Merge remote-tracking branch 'origin/ui' into drew-ai
+    
+    # Conflicts:
+    #       Assets/Prefabs/Villager.prefab (resolved using mine)
+
+[33mcommit 9cbe379c456ef9a4f7c3639cdf852c144db7abc4[m
+Author: ORECROS\Drew <orecros@gmail.com>
+Date:   Sun Oct 6 00:26:10 2019 -0500
+
+    more hats?
+
+[33mcommit d0b4fd0c3d996b2296dde46eb0c5e74585cbdac1[m[33m ([m[1;31morigin/ui[m[33m)[m
+Author: Bill Dang <sparkfire.ffs@gmail.com>
+Date:   Sat Oct 5 23:38:04 2019 -0500
+
+    Added health bars to allies
+
+[33mcommit 5d8f0358989e7652262b39544538a179fefb0248[m
+Author: ORECROS\Drew <orecros@gmail.com>
+Date:   Sat Oct 5 23:26:34 2019 -0500
+
+    introduced anti-clumping mechanics into the AI. Recolored the monster team
+
+[33mcommit 3e68d34a36d50d25d0bc1fd12fa9efd820c2a85e[m
+Author: Bill Dang <sparkfire.ffs@gmail.com>
+Date:   Sat Oct 5 22:58:41 2019 -0500
+
+    Solve merge conflicts and bug fixes
+
+[33mcommit f65a83978e314c80e39d5d379416eb780f13d7db[m
+Merge: f2aa4a2 43a383a
+Author: Bill Dang <sparkfire.ffs@gmail.com>
+Date:   Sat Oct 5 22:52:54 2019 -0500
+
+    Merge branch 'gameplay'
+
+[33mcommit f2aa4a24ee461a6fafb5c8fe43a7b6c3683c654f[m
+Merge: e683b27 e81a5fa
+Author: Bill Dang <sparkfire.ffs@gmail.com>
+Date:   Sat Oct 5 22:49:40 2019 -0500
+
+    Merge remote-tracking branch 'origin/drew-ai'
+
+[33mcommit e683b27d6db3869dfa753760f6a9fbee6e3f257c[m
+Merge: 5d6d917 61b8319
+Author: Bill Dang <sparkfire.ffs@gmail.com>
+Date:   Sat Oct 5 22:49:30 2019 -0500
+
+    Merge branch 'menu-system'
+
+[33mcommit 43a383a0c55eecbc0d3cd75924365b5c79d3d24e[m
+Author: Bill Dang <sparkfire.ffs@gmail.com>
+Date:   Sat Oct 5 22:49:04 2019 -0500
+
+    Added field 1
+
+[33mcommit e81a5fa954cf807de14d1a610cbbbe1f81d74a0b[m
+Author: ORECROS\Drew <orecros@gmail.com>
+Date:   Sat Oct 5 22:16:33 2019 -0500
+
+    Completed death effects for all 3 character types
+
+[33mcommit 3756009373a5a5f5eec0e9d1e12064835f2ebce8[m
+Author: Bill Dang <sparkfire.ffs@gmail.com>
+Date:   Sat Oct 5 21:23:53 2019 -0500
+
+    Added monster and villager spawners
+
+[33mcommit d5bb81593b95b22bafc011f1dc1e7f1d8b2a1067[m
+Author: ORECROS\Drew <orecros@gmail.com>
+Date:   Sat Oct 5 21:02:43 2019 -0500
+
+    monster horns are now hats. houses are now animated.
+
+[33mcommit 61b8319cd7d37856973cdf6cd45fcba94343fb3d[m[33m ([m[1;31morigin/menu-system[m[33m)[m
+Author: Bill Dang <sparkfire.ffs@gmail.com>
+Date:   Sat Oct 5 20:14:44 2019 -0500
+
+    Added artwork for pause menu
+
+[33mcommit 8094bf73916d411cafccb11f0db8e9528ec7c5aa[m
+Author: ORECROS\Drew <orecros@gmail.com>
+Date:   Sat Oct 5 19:28:57 2019 -0500
+
+    Added death effects for Monsters
+
+[33mcommit 5d6d917795600aa834e1b90af85ee5d63ba14ae7[m
+Merge: 99367eb d840b3d
+Author: Bill Dang <sparkfire.ffs@gmail.com>
+Date:   Sat Oct 5 18:02:35 2019 -0500
+
+    Merge branch 'menu-system'
+
+[33mcommit 99367ebef7fc620f6215f5faf1fe28778d1aad9d[m
+Merge: 67b8c32 b5292e2
+Author: Bill Dang <sparkfire.ffs@gmail.com>
+Date:   Sat Oct 5 18:02:30 2019 -0500
+
+    Merge remote-tracking branch 'origin/drew-ai'
+
+[33mcommit 67b8c32df452b1cb2370c41666919162326bcd03[m
+Author: Bill Dang <sparkfire.ffs@gmail.com>
+Date:   Sat Oct 5 18:02:23 2019 -0500
+
+    Branch fixing
+
+[33mcommit d840b3d77a445714ea3ecfc4258817f9ae741293[m
+Author: Bill Dang <sparkfire.ffs@gmail.com>
+Date:   Sat Oct 5 17:55:59 2019 -0500
+
+    Added menu navigation with controller
+
+[33mcommit b5292e2072bc3015365951cf72ed20965f860eda[m
+Merge: 0c49df2 236d2b4
+Author: ORECROS\Drew <orecros@gmail.com>
+Date:   Sat Oct 5 15:50:25 2019 -0500
+
+    Merge remote-tracking branch 'origin/master' into drew-ai
+
+[33mcommit 0c49df21af9172fe91370b063ab192e2dc8ea076[m
+Author: ORECROS\Drew <orecros@gmail.com>
+Date:   Sat Oct 5 15:50:07 2019 -0500
+
+    Fixed a bug with fighters not handling moving targets
+
+[33mcommit 6bab72d84dea500c2548302f508a9cf5aacf68b2[m
+Author: ORECROS\Drew <orecros@gmail.com>
+Date:   Sat Oct 5 15:12:15 2019 -0500
+
+    Unified monster and villager controllers into the fighter controller. added animations.
+
+[33mcommit 236d2b421792a8bcdbcf236bda3a87735a4fc256[m
+Merge: 1ada3dd 60396ad
+Author: Bill Dang <sparkfire.ffs@gmail.com>
+Date:   Sat Oct 5 13:59:04 2019 -0500
+
+    Merge branch 'menu-system'
+
+[33mcommit 1ada3dd62519fb49758c72b8fe4b611e3f91a91e[m
+Merge: b5554a0 7833e8a
+Author: Bill Dang <sparkfire.ffs@gmail.com>
+Date:   Sat Oct 5 13:58:56 2019 -0500
+
+    Merge branch 'animations'
+
+[33mcommit 60396ad43ca599039b1d6d9ddb2031a51e43bda1[m
+Author: Bill Dang <sparkfire.ffs@gmail.com>
+Date:   Sat Oct 5 13:58:08 2019 -0500
+
+    Added pause menu and main menu
+
+[33mcommit 87946cce11d46671ee757473003d2c12184afddc[m
+Merge: 99d9f27 b5554a0
+Author: ORECROS\Drew <orecros@gmail.com>
+Date:   Sat Oct 5 12:36:53 2019 -0500
+
+    Merge branch 'master' into drew-ai
+    
+    # Conflicts:
+    #       Assets/Animations.meta
+    #       Assets/Scripts/Debug.meta
+    #       Assets/Scripts/Editor.meta
+    #       Assets/Scripts/HealthController.cs
+    #       Assets/Scripts/MonsterController.cs
+    #       Assets/Scripts/VillagerController.cs
+    #       Assets/Scripts/VillagerController.cs.meta
+
+[33mcommit 7833e8a84d15ed3e78b35681820ed36ede9d970f[m[33m ([m[1;31morigin/animations[m[33m)[m
+Author: Bill Dang <sparkfire.ffs@gmail.com>
+Date:   Sat Oct 5 12:28:22 2019 -0500
+
+    Upload liquefy models/animations
+
+[33mcommit 99d9f270dc78783c275f49dfb4222ea591b20ec3[m
+Author: ORECROS\Drew <orecros@gmail.com>
+Date:   Sat Oct 5 12:15:53 2019 -0500
+
+    Monsters & houses now interface correctly. buildings get destroyed over time.
+
+[33mcommit b5554a0b461c010bf70d6de6f7089750c735a915[m
+Merge: 6d6c4f6 e3ab07d
+Author: Bill Dang <sparkfire.ffs@gmail.com>
+Date:   Sat Oct 5 12:01:02 2019 -0500
+
+    Merge branch 'animations'
+
+[33mcommit e3ab07d16dd581d47de2a611033a39c2e192383f[m
+Author: Bill Dang <sparkfire.ffs@gmail.com>
+Date:   Sat Oct 5 12:00:27 2019 -0500
+
+    Implemented monster and villager animations
+
+[33mcommit 67217e4ca8bf170a52f0202d5b480f8bee307cd2[m
+Merge: 7755b27 15469f9
+Author: Bill Dang <sparkfire.ffs@gmail.com>
+Date:   Sat Oct 5 10:52:53 2019 -0500
+
+    Merge remote-tracking branch 'origin/drew-ai' into animations
+
+[33mcommit 15469f97d1dee68689e55db75636ecae899c9885[m
+Author: ORECROS\Drew <orecros@gmail.com>
+Date:   Sat Oct 5 10:50:20 2019 -0500
+
+    Target acquisition & attacking for monsters. HealthController health changes & destruction
+
+[33mcommit 7755b276dc14f1c0b8c57a3b9fc74198fed30ebf[m
+Author: Bill Dang <sparkfire.ffs@gmail.com>
+Date:   Sat Oct 5 10:41:12 2019 -0500
+
+    Player rotates with movement; fixed animation errors
+
+[33mcommit 4acbd388ea454618160d50b3ea5a21beeda7eb24[m
+Author: Bill Dang <sparkfire.ffs@gmail.com>
+Date:   Sat Oct 5 10:30:54 2019 -0500
+
+    Player movement and actions are animated
+
+[33mcommit 6d6c4f65ddb8c5792b5f66bb3e965b9d02285309[m
+Merge: f128d9b f5523f8
+Author: Bill Dang <sparkfire.ffs@gmail.com>
+Date:   Sat Oct 5 08:34:44 2019 -0500
+
+    Merge branch 'player'
+
+[33mcommit f5523f8a60d4396de94cb9e6a94b2cd211d8c617[m[33m ([m[1;31morigin/player[m[33m)[m
+Author: Bill Dang <sparkfire.ffs@gmail.com>
+Date:   Sat Oct 5 08:34:31 2019 -0500
+
+    Can heal villagers
+
+[33mcommit 84fca16abf34a772489b419e48b02e6226bbc0b6[m
+Merge: 55eb258 743c73a
+Author: Bill Dang <sparkfire.ffs@gmail.com>
+Date:   Sat Oct 5 07:52:08 2019 -0500
+
+    Merge remote-tracking branch 'origin/drew-ai' into player
+
+[33mcommit 743c73adac6861061fe9d0cc93f0fc96edb0d203[m
+Merge: 48ea1ff f128d9b
+Author: ORECROS\Drew <orecros@gmail.com>
+Date:   Sat Oct 5 07:24:19 2019 -0500
+
+    Merge branch 'master' into drew-ai
+    
+    # Conflicts:
+    #       ProjectSettings/InputManager.asset - resolved using master's version
+    #       ProjectSettings/TagManager.asset - resolved using master's version
+
+[33mcommit 48ea1ffe9c1f555f0e2a84b1ee5dd472d96dc84c[m
+Author: ORECROS\Drew <orecros@gmail.com>
+Date:   Sat Oct 5 07:20:56 2019 -0500
+
+    added advanced navmesh componenets. started work on AI navigation logic
+
+[33mcommit f128d9b88dccf7ddd062136ed4a57a8c4e2e3071[m
+Merge: 0d64fb6 55eb258
+Author: Bill Dang <sparkfire.ffs@gmail.com>
+Date:   Sat Oct 5 01:24:12 2019 -0500
+
+    Merge branch 'player'
+
+[33mcommit 55eb258dbf95145e2e7d9366618a198be11d6848[m[33m ([m[1;32mplayer[m[33m)[m
+Author: Bill Dang <sparkfire.ffs@gmail.com>
+Date:   Sat Oct 5 01:23:58 2019 -0500
+
+    Can repair buildings
+
+[33mcommit 32647c6568aa996fcda4b39cd3b5299b841ddfe6[m
+Merge: 5911715 8170137
+Author: Bill Dang <sparkfire.ffs@gmail.com>
+Date:   Sat Oct 5 00:20:24 2019 -0500
+
+    Merge remote-tracking branch 'origin/drew-ai' into player
+
+[33mcommit 591171531bcf5a881a0735e5e698950de6c60817[m
+Author: Bill Dang <sparkfire.ffs@gmail.com>
+Date:   Sat Oct 5 00:20:02 2019 -0500
+
+    Added interact functionality; player can only interact with one object at once
+
+[33mcommit 29aeaa9506b705149d87ba1df53db74ea921aa11[m
+Author: Bill Dang <sparkfire.ffs@gmail.com>
+Date:   Fri Oct 4 23:22:39 2019 -0500
+
+    Added support for multiplayer drop-in and drop-out
+
+[33mcommit 817013734835a2e060962cebe37e07e94659fb75[m
+Author: ORECROS\Drew <orecros@gmail.com>
+Date:   Fri Oct 4 21:33:35 2019 -0500
+
+    HealthController, Target / Monster + Villager Target
+
+[33mcommit bc62f77184c3a422f111035f327e731e0714da74[m
+Author: Bill Dang <sparkfire.ffs@gmail.com>
+Date:   Fri Oct 4 20:40:30 2019 -0500
+
+    Added controls for multiples players
+
+[33mcommit 0d64fb6b4e8634f5c617aa0a0a806c0f3e314893[m
+Author: Bill Dang <sparkfire.ffs@gmail.com>
+Date:   Fri Oct 4 19:08:19 2019 -0500
+
+    Project organization
+
+[33mcommit 53cd85cccc57a2a15110e6706c01d97944e99c76[m
+Author: Bill Dang <sparkfire.ffs@gmail.com>
+Date:   Fri Oct 4 18:52:22 2019 -0500
+
+    Empty project commit
+
+[33mcommit 41546f840920ee3b2b746955ab76ccab87060836[m
+Author: orecros <orecros@gmail.com>
+Date:   Fri Oct 4 17:52:31 2019 -0500
+
+    Initial commit
