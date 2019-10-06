@@ -21,8 +21,9 @@ public class MonsterSpawner : MonoBehaviour {
     }
 
     private IEnumerator Spawning() {
+        Debug.Log("test");
         int spawnCount = 0;
-        while(true) {
+        while(!GameManager.GameOver) {
             while(monsterList.Count != 0) {
                 yield return null;
             }

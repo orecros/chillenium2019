@@ -49,7 +49,7 @@ public class PlayerInteract : Interactable {
             StartCoroutine(GetComponent<PlayerController>().FreezePlayer(healTime));
             yield return StartCoroutine(player.GetComponent<PlayerController>().FreezePlayer(healTime));
 
-            health.HealDamage(1);
+            health.HealDamage(5);
         }
 
         beingHealed = false;

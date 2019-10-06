@@ -186,6 +186,7 @@ MonoBehaviour:
   canInteract: 0
   selected: 0
   playerCount: 0
+  hammerIcon: {fileID: 21300000, guid: 149216bd60b84454d81462d704475bee, type: 3}
 --- !u!114 &1837416360088375770
 MonoBehaviour:
   m_ObjectHideFlags: 0

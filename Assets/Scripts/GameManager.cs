@@ -32,6 +32,12 @@ public class GameManager : MonoBehaviour {
         Paused = set;
     }
 
+    public static bool GameOver {
+        get {
+            return gameOver;
+        }
+    }
+
     public static bool Paused {
         get {
             return paused || gameOver;
