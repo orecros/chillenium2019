@@ -15,7 +15,6 @@ public class VillagerInteract : Interactable {
     }
 
     protected virtual void Update() {
-        Debug.Log(canInteract);
         if(health.AtMax() || beingHealed)
             canInteract = false;
         else

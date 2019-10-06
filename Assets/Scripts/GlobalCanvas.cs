@@ -12,7 +12,7 @@ public class GlobalCanvas : MonoBehaviour {
     
     //private RectTransform arrow;
     private bool scrollBuffer;
-    private int arrowPos = 0;
+    private int arrowPos = 1;
 
     private void Awake() {
         canvas = gameObject;
@@ -40,7 +40,8 @@ public class GlobalCanvas : MonoBehaviour {
 
             if(selectedButton != null && (Input.GetButtonDown("Act1") || Input.GetButtonDown("Act2") || Input.GetButtonDown("Act3")))
                 selectedButton.GetComponent<Button>().onClick.Invoke();
-        }
+        } else
+            arrowPos = 1;
     }
 
     private IEnumerator ScrollPause() {

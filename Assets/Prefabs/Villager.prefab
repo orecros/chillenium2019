@@ -246,7 +246,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 688447909851152750}
+      - m_Target: {fileID: 0}
         m_MethodName: MakeCorpse
         m_Mode: 1
         m_Arguments:
@@ -305,7 +305,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1.5, y: 1.5, z: 1}
   m_Center: {x: 0, y: 0.4, z: 0}
 --- !u!114 &5728883592958864050
 MonoBehaviour:
@@ -340,7 +340,7 @@ MonoBehaviour:
   OutfitParts:
   - {fileID: 5694869828417476258}
   - {fileID: 4875887228302973155}
-  solidsList: {fileID: 4247966043983365135}
+  solidsList: {fileID: 0}
 --- !u!114 &8640124018673466323
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -357,7 +357,7 @@ MonoBehaviour:
   - {fileID: 1526836580701567911}
   - {fileID: 3606446414765762170}
   - {fileID: 8667715635714055425}
-  solidsList: {fileID: 4247966043983365135}
+  solidsList: {fileID: 0}
 --- !u!1 &7374721663263937788
 GameObject:
   m_ObjectHideFlags: 0
