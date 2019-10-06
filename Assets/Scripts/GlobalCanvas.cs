@@ -8,7 +8,7 @@ public class GlobalCanvas : MonoBehaviour {
     public static GameObject canvas;
     public static GameObject selectedButton;
 
-    public GameObject pauseMenu, resume, mainMenu, gameOver;
+    public GameObject pauseMenu, resume, mainMenu, gameOverScreen, startOver, quit;
     
     //private RectTransform arrow;
     private bool scrollBuffer;
@@ -22,6 +22,8 @@ public class GlobalCanvas : MonoBehaviour {
             //arrow = pauseMenu.transform.Find("Arrow").GetComponent<RectTransform>();
             resume = pauseMenu.transform.Find("Resume").gameObject;
             mainMenu = pauseMenu.transform.Find("Main Menu").gameObject;
+
+            gameOverScreen.SetActive(false);
         } catch {
             Debug.LogError("No pause menu found in canvas!");
         }
@@ -48,7 +50,7 @@ public class GlobalCanvas : MonoBehaviour {
 
     private IEnumerator ScrollPause() {
         scrollBuffer = true;
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(0.35f);
         scrollBuffer = false;
     }
 
@@ -60,10 +62,17 @@ public class GlobalCanvas : MonoBehaviour {
 
         if(selectedButton != null)
             selectedButton.GetComponent<UIButton>().OnExit();
-        if(arrowPos == 0)
-            resume.GetComponent<UIButton>().OnHover();
-        else
-            mainMenu.GetComponent<UIButton>().OnHover();
+        if(!gameOverScreen.activeSelf) {
+            if(arrowPos == 0)
+                resume.GetComponent<UIButton>().OnHover();
+            else
+                mainMenu.GetComponent<UIButton>().OnHover();
+        } else {
+            if(arrowPos == 0)
+                startOver.GetComponent<UIButton>().OnHover();
+            else
+                quit.GetComponent<UIButton>().OnHover();
+        }
     }
 
     private float MaxAbsVerticalInput() {
@@ -75,9 +84,25 @@ public class GlobalCanvas : MonoBehaviour {
     }
 
     public IEnumerator GameOver() {
-        yield return null;
+        arrowPos = 5;
+        yield return new WaitForSeconds(1f);
 
+        //List<Image> images = new List<Image>();
+        Image[] images = gameOverScreen.GetComponentsInChildren<Image>();
+        for(int i = 0; i < images.Length; i++)
+            images[i].color = new Color32(255, 255, 255, 0);
+        gameOverScreen.SetActive(true);
 
+        for(int i = 0; i < 255; i += 5) {
+            gameOverScreen.transform.SetAsLastSibling();
+            for(int j = 0; j < images.Length; j++)
+                images[j].color += new Color32(0, 0, 0, 5);
+            yield return new WaitForSeconds(0.05f);
+        }
+        while(true) {
+            gameOverScreen.transform.SetAsLastSibling();
+            yield return null;
+        }
     }
 
 }

@@ -10,7 +10,7 @@ public class UIButton : MonoBehaviour {
     private Image image;
     private Sprite sprite;
 
-    private void Awake() {
+    private void Start() {
         image = GetComponent<Image>();
         sprite = image.sprite;
         image.sprite = blank;
@@ -22,12 +22,14 @@ public class UIButton : MonoBehaviour {
     }
 
     public void OnHover() {
-        image.sprite = sprite;
+        if(image != null)
+            image.sprite = sprite;
         GlobalCanvas.selectedButton = gameObject;
     }
 
     public void OnExit() {
-        image.sprite = blank;
+        if(image != null)
+            image.sprite = blank;
         GlobalCanvas.selectedButton = null;
     }
     

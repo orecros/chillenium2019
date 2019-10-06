@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
     
-    private static bool paused;
+    private static bool paused, gameOver;
     public static GameManager Instance;
     List<HealthController> Houses;
     List<HealthController> Players;
@@ -17,8 +17,9 @@ public class GameManager : MonoBehaviour {
     }
 
     private void Start() {
-        if(GlobalCanvas.canvas.GetComponent<GlobalCanvas>().pauseMenu.activeSelf) 
-            Paused = true;
+        /*if(GlobalCanvas.canvas.GetComponent<GlobalCanvas>().pauseMenu.activeSelf) 
+            Paused = true;*/
+        Paused = false;
     }
 
     private void Update() {
@@ -33,9 +34,10 @@ public class GameManager : MonoBehaviour {
 
     public static bool Paused {
         get {
-            return paused;
+            return paused || gameOver;
         }
         set {
+            gameOver = false;
             if(value != paused) {
                 paused = !paused;
                 if(paused) {
@@ -46,19 +48,24 @@ public class GameManager : MonoBehaviour {
                     Time.timeScale = 1;
                 }
             } else {
-                Debug.Log("Attempting to set pause state to current state: " + paused);
+                //Debug.Log("Attempting to set pause state to current state: " + paused);
             }
         }
     }
 
     public static void LoadSceneStatic(string scene) {
         Time.timeScale = 1;
+        PlayerManager.ResetPlayers();
+        PlayerManager.canJoin = true;
+
+        if(scene.Equals("")) {
+            scene = "Field0" + Random.Range(1, 4);
+        }
         SceneManager.LoadScene(scene);
     }
 
     public void LoadScene(string scene) {
-        Time.timeScale = 1;
-        SceneManager.LoadScene(scene);
+        LoadSceneStatic(scene);
     }
 
     public void RegisterObjective(HealthController objective, ObjectiveMarker.Type type) {
@@ -88,12 +95,16 @@ public class GameManager : MonoBehaviour {
     }
 
     public void DoDefeat() {
-        print("the players lose :(");
-        if(Paused)
-            Paused = false;
-        //MonsterSpawner.Instance.chanceTimer = 0.5f;
-        //MonsterSpawner.Instance.spawnRate = 100f;
+        PlayerManager.canJoin = false;
+        if(!gameOver) {
+            print("the players lose :(");
+            if(Paused)
+                Paused = false;
+            gameOver = true;
+            //MonsterSpawner.Instance.chanceTimer = 0.5f;
+            //MonsterSpawner.Instance.spawnRate = 100f;
 
-        StartCoroutine(GlobalCanvas.canvas.GetComponent<GlobalCanvas>().GameOver());
+            StartCoroutine(GlobalCanvas.canvas.GetComponent<GlobalCanvas>().GameOver());
+        }
     }
 }
