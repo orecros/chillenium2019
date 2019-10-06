@@ -16,8 +16,8 @@ public abstract class FighterController : MonoBehaviour {
             if (value == fighterState) return;
 
             if (value == State.Navigating) {
-                navMeshAgent.updatePosition = true;
-                navMeshAgent.updateRotation = true;
+                //navMeshAgent.updatePosition = true;
+                //navMeshAgent.updateRotation = true;
             }
             else if (value == State.Attacking) {
                 animator.SetBool("Moving", false);
@@ -25,9 +25,9 @@ public abstract class FighterController : MonoBehaviour {
             }
 
             if (fighterState == State.Navigating) {
-                navMeshAgent.updatePosition = false;
-                navMeshAgent.updateRotation = false;
-                manualVelocity = navMeshAgent.velocity;
+                //navMeshAgent.updatePosition = false;
+                //navMeshAgent.updateRotation = false;
+                //manualVelocity = navMeshAgent.velocity;
             }
 
 
@@ -130,6 +130,7 @@ public abstract class FighterController : MonoBehaviour {
             FighterState = State.Navigating;
         }
 
+        /*
         // update our manual velocity
         DoManualVelocityAdjustment();
 
@@ -138,6 +139,7 @@ public abstract class FighterController : MonoBehaviour {
 
         // move towards our target
         characterController.Move(manualVelocity * Time.deltaTime);
+        */
         
         if (GetDistanceToTarget() < attackRange) {
             FighterState = State.Approaching;

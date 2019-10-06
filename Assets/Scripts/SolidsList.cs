@@ -10,13 +10,23 @@ public class SolidsList : MonoBehaviour
         GameObject parent = new GameObject();
 
         foreach(GameObject Solid in Solids) {
-            
-
             GameObject clone = Instantiate(Solid, parent.transform, true);
             clone.SetActive(true);
-            clone.AddComponent<Rigidbody>();
-            MeshCollider m = clone.AddComponent<MeshCollider>();
-            m.convex = true;
+
+            if(Solid.CompareTag("MultiPartHat")) {
+                foreach (Transform child in clone.transform) {
+                    child.gameObject.AddComponent<Rigidbody>();
+                    MeshCollider m = child.gameObject.AddComponent<MeshCollider>();
+                    m.convex = true;
+                }
+            }
+            else {
+                clone.AddComponent<Rigidbody>();
+                MeshCollider m = clone.AddComponent<MeshCollider>();
+                m.convex = true;
+            }
+
+            
         }
 
         return parent;
