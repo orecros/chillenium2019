@@ -1204,6 +1204,7 @@ MonoBehaviour:
   pauseMenu: {fileID: 915252892}
   resume: {fileID: 0}
   mainMenu: {fileID: 0}
+  gameOver: {fileID: 0}
 --- !u!114 &341636874
 MonoBehaviour:
   m_ObjectHideFlags: 0
