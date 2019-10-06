@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour {
     private CharacterController controller;
     private Animator anim;
     private float moveX, moveZ, quitTimer;
+    private float ySpeed;
     private Vector3 moveDir;
 
     private List<GameObject> interactInRange = new List<GameObject>();
