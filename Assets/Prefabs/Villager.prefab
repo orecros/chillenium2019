@@ -282,6 +282,8 @@ GameObject:
   - component: {fileID: 5390706690820801800}
   - component: {fileID: 4247966043983365135}
   - component: {fileID: 688447909851152750}
+  - component: {fileID: 3528968748295998372}
+  - component: {fileID: 7060896552156887293}
   m_Layer: 10
   m_Name: Villager
   m_TagString: Villager
@@ -460,6 +462,43 @@ MonoBehaviour:
   LiquidPrefab: {fileID: 6160023988064111516, guid: 0a0135f54b5e8bb45ba633e695344b4f,
     type: 3}
   DeathSound: {fileID: 8300000, guid: da0c005d9afcd3846a2c376e179d8a33, type: 3}
+--- !u!114 &3528968748295998372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4046138390870079388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e7bb1990fa9a9e4f835e8ca94b2af7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  iconPrefab: {fileID: 3633524236573020252, guid: 683d789e3995a014484f74e24aa45b4b,
+    type: 3}
+  offset: {x: 0, y: 2, z: 0}
+  canInteract: 0
+  selected: 0
+  playerCount: 0
+  healthBarPrefab: {fileID: 5512496416199433027, guid: c424702e3709c60418793b64e575fb64,
+    type: 3}
+  healthBars:
+  - {fileID: 21300000, guid: 14b307b449374b940991153ea787edaa, type: 3}
+  - {fileID: 21300000, guid: 4cc0a712036ce774daa868a2c6abc771, type: 3}
+  - {fileID: 21300000, guid: 15dabaa12225ae84f9e0d89e266d2c21, type: 3}
+--- !u!135 &7060896552156887293
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4046138390870079388}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.25
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2226662503142256581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1024,9 +1063,9 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 3440020757538907382}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &7694360834743078892 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: c856c7a4069268949b22a025821feeeb,
+--- !u!1 &6673355744305020415 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: c856c7a4069268949b22a025821feeeb,
     type: 3}
   m_PrefabInstance: {fileID: 3440020757538907382}
   m_PrefabAsset: {fileID: 0}
@@ -1036,9 +1075,9 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 3440020757538907382}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &6673355744305020415 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: c856c7a4069268949b22a025821feeeb,
+--- !u!95 &310149862116991638 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: -6057140222963153312, guid: c856c7a4069268949b22a025821feeeb,
     type: 3}
   m_PrefabInstance: {fileID: 3440020757538907382}
   m_PrefabAsset: {fileID: 0}
@@ -1054,9 +1093,9 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 3440020757538907382}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &310149862116991638 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: -6057140222963153312, guid: c856c7a4069268949b22a025821feeeb,
+--- !u!4 &7694360834743078892 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: c856c7a4069268949b22a025821feeeb,
     type: 3}
   m_PrefabInstance: {fileID: 3440020757538907382}
   m_PrefabAsset: {fileID: 0}
