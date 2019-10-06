@@ -41,7 +41,7 @@ public class MainMenuManager : MonoBehaviour {
                SwapMenu();
             else
                 ExitGame();
-        } else if(credits.activeSelf && Input.GetButtonDown("Back"))
+        } else if(credits.activeSelf && (Input.GetButtonDown("Back") || Input.GetButtonDown("Act1") || Input.GetButtonDown("Act2") || Input.GetButtonDown("Act3")))
             SwapMenu();
 
         if(selectedButton != null && (Input.GetButtonDown("Act1") || Input.GetButtonDown("Act2") || Input.GetButtonDown("Act3")))

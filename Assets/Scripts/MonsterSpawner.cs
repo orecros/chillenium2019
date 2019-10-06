@@ -22,9 +22,9 @@ public class MonsterSpawner : MonoBehaviour {
     }
 
     private IEnumerator Spawning() {
-        Debug.Log("test");
         float timeOutTimer = 0;
         int spawnCount = 0;
+
         while(!GameManager.GameOver) {
             while(monsterList.Count != 0) {
                 yield return null;
@@ -37,14 +37,14 @@ public class MonsterSpawner : MonoBehaviour {
             waveNum++;
             timeOut++;
             spawnCount = spawnPoints.Count + waveNum;
-            spawnCount += waveNum > 3 ? Random.Range(1, waveNum) : 
-                waveNum > 8 ? Random.Range(3, waveNum) :
-                waveNum > 15 ? Random.Range(5, waveNum)
+            spawnCount += waveNum > 5 ? Random.Range(1, waveNum - 2) : 
+                waveNum > 10 ? Random.Range(3, waveNum - 4) :
+                waveNum > 15 ? Random.Range(5, waveNum - 6)
                 : 0;
             if(PlayerManager.playerCount == 2)
-                spawnCount = (int)(spawnCount * Random.Range(1.25f, 1.8f));
+                spawnCount = (int)(spawnCount * Random.Range(1.4f, 1.8f));
             else if(PlayerManager.playerCount == 3)
-                spawnCount = (int)(spawnCount * Random.Range(1.75f, 2.5f));
+                spawnCount = (int)(spawnCount * Random.Range(1.8f, 2.5f));
 
             for( ; spawnCount > 0; spawnCount--) {
                 SpawnMonster();
