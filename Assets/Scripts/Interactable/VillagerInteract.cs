@@ -61,7 +61,7 @@ public class VillagerInteract : Interactable {
             player.GetComponent<PlayerController>().SetAnimTrigger("Heal");
             yield return StartCoroutine(player.GetComponent<PlayerController>().FreezePlayer(healTime));
 
-            health.HealDamage(1);
+            health.HealDamage(5);
         }
 
         GetComponent<NavMeshAgent>().isStopped = false;

@@ -1,18 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Building : Interactable {
 
     public static float repairTime = 1.25f;
-    public static int repairLoopCount = 2;
+    public static int repairLoopCount = 1;
 
+    public Sprite hammerIcon;
+
+    private Sprite a_Icon;
     private HealthController health;
     private bool repairing;
 
     protected override void Start() {
         base.Start();
         health = GetComponent<HealthController>();
+
+        a_Icon = icon.GetComponent<Image>().sprite;
+        icon.GetComponent<RectTransform>().sizeDelta = new Vector2(35, 35);
     }
 
     protected virtual void Update() {
@@ -20,6 +27,19 @@ public class Building : Interactable {
             canInteract = false;
         else
             canInteract = true;
+    }
+
+    protected override void LateUpdate() {
+        if(selected && playerCount > 0 && canInteract) {
+            icon.GetComponent<Image>().sprite = a_Icon;
+            icon.SetActive(true);
+        } else if(!selected && !health.AtMax() && !health.IsDead()) {
+            icon.GetComponent<Image>().sprite = hammerIcon;
+            icon.SetActive(true);
+        } else {
+            icon.SetActive(false);
+            selected = false;
+        }
     }
 
     public override void Interact() {
@@ -41,7 +61,7 @@ public class Building : Interactable {
         }
 
         if(!health.IsDead())
-            health.HealDamage(3);
+            health.HealDamage(10);
         repairing = false;
         yield return null;
         if(!health.AtMax())

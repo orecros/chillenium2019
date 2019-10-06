@@ -11,6 +11,7 @@ public class MonsterSpawner : MonoBehaviour {
     public List<Transform> spawnPoints = new List<Transform>();
     public static List<GameObject> monsterList = new List<GameObject>();
 
+    private float timeOut = 15f;
     private int rand, waveNum;
 
     private void Start() {
@@ -21,14 +22,20 @@ public class MonsterSpawner : MonoBehaviour {
     }
 
     private IEnumerator Spawning() {
+        Debug.Log("test");
+        float timeOutTimer = 0;
         int spawnCount = 0;
-        while(true) {
+        while(!GameManager.GameOver) {
             while(monsterList.Count != 0) {
                 yield return null;
+                timeOutTimer += Time.deltaTime;
+                if(timeOutTimer > timeOut)
+                    break;
             }
             yield return new WaitForSeconds(waitTime);
 
             waveNum++;
+            timeOut++;
             spawnCount = spawnPoints.Count + waveNum;
             spawnCount += waveNum > 3 ? Random.Range(1, waveNum) : 
                 waveNum > 8 ? Random.Range(3, waveNum) :
