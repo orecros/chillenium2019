@@ -82,7 +82,7 @@ public class PlayerController : MonoBehaviour {
             moveX = Input.GetAxis("Horizontal" + playerNum);
             moveZ = Input.GetAxis("Vertical" + playerNum);
             moveDir = new Vector3(moveX, 0, moveZ);
-            controller.Move(moveDir * moveSpeed);
+            controller.SimpleMove(moveDir * moveSpeed / Time.fixedDeltaTime);
         }
 
         //transform.rotation = Quaternion.Euler(moveX * 360f, 0, moveZ * 360f);
