@@ -38,6 +38,10 @@ public class HealthController : MonoBehaviour
         return MaxHealth == Health;
     }
 
+    public bool IsDead() {
+        return Health <= 0;
+    }
+
     public int DamageAmount() {
         return MaxHealth - Health;
     }

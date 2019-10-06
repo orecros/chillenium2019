@@ -8,9 +8,8 @@ public class GameManager : MonoBehaviour {
     private static bool paused;
 
     private void Start() {
-        if(GlobalCanvas.canvas.GetComponent<GlobalCanvas>().pauseMenu.activeSelf) {
+        if(GlobalCanvas.canvas.GetComponent<GlobalCanvas>().pauseMenu.activeSelf) 
             Paused = true;
-        }
     }
 
     private void Update() {
@@ -19,7 +18,11 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    public bool Paused {
+    public void SetPause(bool set) {
+        Paused = set;
+    }
+
+    public static bool Paused {
         get {
             return paused;
         }
@@ -39,7 +42,13 @@ public class GameManager : MonoBehaviour {
         }
     }
 
+    public static void LoadSceneStatic(string scene) {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(scene);
+    }
+
     public void LoadScene(string scene) {
+        Time.timeScale = 1;
         SceneManager.LoadScene(scene);
     }
 

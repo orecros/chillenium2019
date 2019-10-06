@@ -103,7 +103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e2c5c9ce162cdb47a0898fc7d9c19f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0.05
+  moveSpeed: 0.15
   canAct: 0
   syringe: {fileID: 5420949081044378639}
   hammer: {fileID: 4397322531201423825}
