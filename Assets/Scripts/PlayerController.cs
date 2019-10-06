@@ -116,13 +116,13 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void OnTriggerEnter(Collider other) {
-        if(other.CompareTag("Interactable") && other.GetComponent<Interactable>().canInteract) {
+        if((other.CompareTag("Interactable") || other.CompareTag("Villager")) && other.GetComponent<Interactable>().canInteract) {
             interactInRange.Add(other.gameObject);
         }
     }
 
     private void OnTriggerExit(Collider other) {
-        if(other.CompareTag("Interactable")) {
+        if(other.CompareTag("Interactable") || other.CompareTag("Villager")) {
             interactInRange.Remove(other.gameObject);
         }
     }
