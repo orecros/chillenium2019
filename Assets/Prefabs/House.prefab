@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6357576427359575512}
   - component: {fileID: 14099457904515788}
+  - component: {fileID: 8786411553556912925}
+  - component: {fileID: 4281511630420968318}
   m_Layer: 0
   m_Name: House
   m_TagString: Interactable
@@ -101,6 +103,37 @@ MonoBehaviour:
       m_Calls: []
   MaxHealth: 6
   health: 6
+--- !u!65 &8786411553556912925
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 291618474936751463}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.38, y: 1.6, z: 3.86}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4281511630420968318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 291618474936751463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f1a6542a678bf3408077192e5f0a91b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  iconPrefab: {fileID: 3633524236573020252, guid: 683d789e3995a014484f74e24aa45b4b,
+    type: 3}
+  offset: {x: 0, y: 2, z: 0}
+  canInteract: 0
+  selected: 0
+  playerCount: 0
 --- !u!1 &1669625862042178497
 GameObject:
   m_ObjectHideFlags: 0
@@ -438,7 +471,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: House
       objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 0679a7d2f7682e141b1a81e60b9c400e,
+    - target: {fileID: -4216859302048453862, guid: e4656f450a674d94db48949f189aab28,
         type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.3757483
@@ -491,6 +524,36 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 0679a7d2f7682e141b1a81e60b9c400e,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4021484518804429414, guid: e4656f450a674d94db48949f189aab28,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4917489942147871812, guid: e4656f450a674d94db48949f189aab28,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -1171654221914638654, guid: e4656f450a674d94db48949f189aab28,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1567222836753549226, guid: e4656f450a674d94db48949f189aab28,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -6057140222963153312, guid: e4656f450a674d94db48949f189aab28,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 20a05954dd474154bbad2049f976b416, type: 2}
+    - target: {fileID: -6057140222963153312, guid: e4656f450a674d94db48949f189aab28,
+        type: 3}
+      propertyPath: m_ApplyRootMotion
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

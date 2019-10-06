@@ -16,7 +16,7 @@ public class Building : Interactable {
     }
 
     protected virtual void Update() {
-        if(health.AtMax() || repairing)
+        if(health.AtMax() || health.IsDead() || repairing)
             canInteract = false;
         else
             canInteract = true;

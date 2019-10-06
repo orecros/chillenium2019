@@ -153,9 +153,9 @@ GameObject:
   - component: {fileID: 8937193504612625762}
   - component: {fileID: 3770701645051918669}
   - component: {fileID: 5390706690820801800}
-  - component: {fileID: 4247966043983365135}
-  - component: {fileID: 688447909851152750}
-  m_Layer: 10
+  - component: {fileID: 5808216502484602006}
+  - component: {fileID: 5728883592958864050}
+  m_Layer: 0
   m_Name: Villager
   m_TagString: Villager
   m_Icon: {fileID: 0}
@@ -294,7 +294,20 @@ MonoBehaviour:
   attackDamage: 1
   targetAcquisitionInterval: 1
   animator: {fileID: 310149862116991638}
---- !u!114 &4247966043983365135
+--- !u!65 &5808216502484602006
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4046138390870079388}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0.4, z: 0}
+--- !u!114 &5728883592958864050
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -303,28 +316,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 4046138390870079388}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99979808ec40cb14fb1ea46a8a27a548, type: 3}
+  m_Script: {fileID: 11500000, guid: 0e7bb1990fa9a9e4f835e8ca94b2af7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Solids:
-  - {fileID: 7374721663263937788}
-  - {fileID: 2510313304131341701}
---- !u!114 &688447909851152750
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4046138390870079388}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 446359c0faad5aa4992879228c4390a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BodyMaterial: {fileID: 2100000, guid: 1f27123188eaa4d419bb90a2106af80d, type: 2}
-  solidsList: {fileID: 4247966043983365135}
-  LiquidPrefab: {fileID: 6160023988064111516, guid: 0a0135f54b5e8bb45ba633e695344b4f,
+  iconPrefab: {fileID: 3633524236573020252, guid: 683d789e3995a014484f74e24aa45b4b,
     type: 3}
+  offset: {x: 0, y: 2, z: 0}
+  canInteract: 0
+  selected: 0
+  playerCount: 0
 --- !u!114 &2226662503142256581
 MonoBehaviour:
   m_ObjectHideFlags: 0
