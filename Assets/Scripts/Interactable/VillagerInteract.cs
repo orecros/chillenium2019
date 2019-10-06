@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.AI;
 
 public class VillagerInteract : Interactable {
     
@@ -29,7 +30,7 @@ public class VillagerInteract : Interactable {
 
     protected override void LateUpdate() {
         base.LateUpdate();
-        icon.GetComponent<RectTransform>().position = Camera.main.WorldToScreenPoint(transform.position + offset);
+        icon.GetComponent<RectTransform>().position = Camera.main.WorldToScreenPoint(transform.position + offset) + new Vector3(0, 12);
 
         healthBar.GetComponent<RectTransform>().position = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0, 1.5f));
         switch(health.Health) {
@@ -55,13 +56,15 @@ public class VillagerInteract : Interactable {
     private IEnumerator InteractFreeze(GameObject player, int playerNum) {
         //Debug.Log("Healing...");
         beingHealed = true;
+        GetComponent<NavMeshAgent>().isStopped = true;
         while(!health.AtMax()) {
             player.GetComponent<PlayerController>().SetAnimTrigger("Heal");
             yield return StartCoroutine(player.GetComponent<PlayerController>().FreezePlayer(healTime));
 
             health.HealDamage(1);
         }
-        
+
+        GetComponent<NavMeshAgent>().isStopped = false;
         beingHealed = false;
         //Debug.Log("Done healing.");
     }

@@ -429,7 +429,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iconPrefab: {fileID: 3633524236573020252, guid: 683d789e3995a014484f74e24aa45b4b,
     type: 3}
-  offset: {x: 0, y: 2, z: 0}
+  offset: {x: 0, y: 1.5, z: 0}
   canInteract: 0
   selected: 0
   playerCount: 0
@@ -679,6 +679,16 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 3389636032273343697, guid: c856c7a4069268949b22a025821feeeb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 142129225711904193, guid: c856c7a4069268949b22a025821feeeb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -6057140222963153312, guid: c856c7a4069268949b22a025821feeeb,
         type: 3}
       propertyPath: m_Controller
@@ -820,15 +830,25 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
-    - target: {fileID: -382490319589176425, guid: c856c7a4069268949b22a025821feeeb,
+    - target: {fileID: -2254802268455275948, guid: c856c7a4069268949b22a025821feeeb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: -2254802268455275948, guid: c856c7a4069268949b22a025821feeeb,
         type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8840569424668823022, guid: c856c7a4069268949b22a025821feeeb,
+    - target: {fileID: -3476529807849091325, guid: c856c7a4069268949b22a025821feeeb,
         type: 3}
-      propertyPath: m_IsActive
-      value: 0
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -4259027695074441334, guid: c856c7a4069268949b22a025821feeeb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -2885538708037666313, guid: c856c7a4069268949b22a025821feeeb,
         type: 3}

@@ -82,6 +82,11 @@ MonoBehaviour:
   attackDamage: 1
   targetAcquisitionInterval: 1
   animator: {fileID: 1205884306063275482}
+  healthBarPrefab: {fileID: 5512496416199433027, guid: c424702e3709c60418793b64e575fb64,
+    type: 3}
+  healthBars:
+  - {fileID: 21300000, guid: 08e3993a60b7cf741abe5807fe689615, type: 3}
+  - {fileID: 21300000, guid: 15dabaa12225ae84f9e0d89e266d2c21, type: 3}
 --- !u!143 &5933469889043582105
 CharacterController:
   m_ObjectHideFlags: 0
@@ -156,6 +161,28 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1874790893546543286}
         m_MethodName: DestroyThis
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4568061279081683227}
+        m_MethodName: DestroyHealthBar
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4568061279081683227}
+        m_MethodName: RemoveMonster
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -543,11 +570,6 @@ PrefabInstance:
       propertyPath: m_TagString
       value: MultiPartHat
       objectReference: {fileID: 0}
-    - target: {fileID: -4700629708204527944, guid: 751d3d440623574489fc954afa51a0ab,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: -6569870423401780750, guid: 751d3d440623574489fc954afa51a0ab,
         type: 3}
       propertyPath: m_IsActive
@@ -557,16 +579,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: MultiPartHat
-      objectReference: {fileID: 0}
-    - target: {fileID: 1729053560504592237, guid: 751d3d440623574489fc954afa51a0ab,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7773702117847030203, guid: 751d3d440623574489fc954afa51a0ab,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -2254802268455275948, guid: 751d3d440623574489fc954afa51a0ab,
         type: 3}
@@ -588,22 +600,7 @@ PrefabInstance:
       propertyPath: m_TagString
       value: MultiPartHat
       objectReference: {fileID: 0}
-    - target: {fileID: -1602809980282570085, guid: 751d3d440623574489fc954afa51a0ab,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: -2836029033409962210, guid: 751d3d440623574489fc954afa51a0ab,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -2898132905133207994, guid: 751d3d440623574489fc954afa51a0ab,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -2967349413182303975, guid: 751d3d440623574489fc954afa51a0ab,
         type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -624,6 +621,36 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -3771171351750660050, guid: 751d3d440623574489fc954afa51a0ab,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4700629708204527944, guid: 751d3d440623574489fc954afa51a0ab,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1729053560504592237, guid: 751d3d440623574489fc954afa51a0ab,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7773702117847030203, guid: 751d3d440623574489fc954afa51a0ab,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -1602809980282570085, guid: 751d3d440623574489fc954afa51a0ab,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -2898132905133207994, guid: 751d3d440623574489fc954afa51a0ab,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -2967349413182303975, guid: 751d3d440623574489fc954afa51a0ab,
         type: 3}
       propertyPath: m_Enabled
       value: 1

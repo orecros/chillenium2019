@@ -23,4 +23,8 @@ public class VillagerController : FighterController {
     protected override Target FindTarget(Target currentTarget) {
         return TargetSystem.Instance.GetVillagerTarget(transform.position, currentTarget as VillagerTarget);
     }
+
+    public void RemoveVillager() {
+        VillagerSpawner.villagerList.Remove(gameObject);
+    }
 }

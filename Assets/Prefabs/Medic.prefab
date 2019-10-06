@@ -32,9 +32,9 @@ GameObject:
   - component: {fileID: 2786106013496173824}
   - component: {fileID: 5179445997728429953}
   - component: {fileID: 1363205989852318083}
-  - component: {fileID: 3143820217318479727}
-  - component: {fileID: 4706795412188020820}
-  m_Layer: 12
+  - component: {fileID: 1954019367}
+  - component: {fileID: 1954019368}
+  m_Layer: 0
   m_Name: Medic
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -106,6 +106,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 0.15
+  healthBarPrefab: {fileID: 5512496416199433027, guid: c424702e3709c60418793b64e575fb64,
+    type: 3}
+  healthBars:
+  - {fileID: 21300000, guid: 14b307b449374b940991153ea787edaa, type: 3}
+  - {fileID: 21300000, guid: 4cc0a712036ce774daa868a2c6abc771, type: 3}
+  - {fileID: 21300000, guid: 15dabaa12225ae84f9e0d89e266d2c21, type: 3}
   canAct: 0
   syringe: {fileID: 5420949081044378639}
   hammer: {fileID: 4397322531201423825}
@@ -240,7 +246,20 @@ MonoBehaviour:
       m_Calls: []
   MaxHealth: 3
   health: 3
---- !u!114 &3143820217318479727
+--- !u!135 &1954019367
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7623390560638246676}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1
+  m_Center: {x: 0, y: 0.5, z: 0}
+--- !u!114 &1954019368
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -291,10 +310,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -6855062863988604957, guid: a37be5b22610ba64897593cbcf2805f4,
         type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: -6855062863988604957, guid: a37be5b22610ba64897593cbcf2805f4,
+        type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -6855062863988604957, guid: a37be5b22610ba64897593cbcf2805f4,
+    - target: {fileID: -5426758703216422906, guid: a37be5b22610ba64897593cbcf2805f4,
         type: 3}
       propertyPath: m_Layer
       value: 9
@@ -398,13 +422,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5130276663628583828, guid: 6cdda62e41238714da9d0d210af54905,
         type: 3}
-      propertyPath: m_IsActive
-      value: 0
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 5130276663628583828, guid: 6cdda62e41238714da9d0d210af54905,
         type: 3}
-      propertyPath: m_Layer
-      value: 9
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -5688294212379169206, guid: 6cdda62e41238714da9d0d210af54905,
         type: 3}
@@ -483,10 +507,15 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: b25d1183a92374145a2472de7e0f4cf4, type: 2}
     - target: {fileID: 3970871132311529392, guid: 6cdda62e41238714da9d0d210af54905,
         type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3970871132311529392, guid: 6cdda62e41238714da9d0d210af54905,
+        type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3970871132311529392, guid: 6cdda62e41238714da9d0d210af54905,
+    - target: {fileID: 1745447579936222232, guid: 6cdda62e41238714da9d0d210af54905,
         type: 3}
       propertyPath: m_Layer
       value: 9
