@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 14099457904515788}
   - component: {fileID: 8786411553556912925}
   - component: {fileID: 4281511630420968318}
+  - component: {fileID: 1837416360088375770}
   m_Layer: 0
   m_Name: House
   m_TagString: Interactable
@@ -138,6 +139,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1837416360088375770}
+        m_MethodName: MarkObjectiveLost
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnHealthChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -174,6 +186,18 @@ MonoBehaviour:
   canInteract: 0
   selected: 0
   playerCount: 0
+--- !u!114 &1837416360088375770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 291618474936751463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c28bb9be3eb26954dbd69db34af4579f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1296917859182762542
 GameObject:
   m_ObjectHideFlags: 0
@@ -1012,15 +1036,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0679a7d2f7682e141b1a81e60b9c400e, type: 3}
---- !u!4 &5745934996566499280 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 0679a7d2f7682e141b1a81e60b9c400e,
-    type: 3}
-  m_PrefabInstance: {fileID: 776622038697473226}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8783972793265040835 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 0679a7d2f7682e141b1a81e60b9c400e,
+    type: 3}
+  m_PrefabInstance: {fileID: 776622038697473226}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5745934996566499280 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 0679a7d2f7682e141b1a81e60b9c400e,
     type: 3}
   m_PrefabInstance: {fileID: 776622038697473226}
   m_PrefabAsset: {fileID: 0}
