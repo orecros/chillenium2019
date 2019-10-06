@@ -5,16 +5,21 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuManager : MonoBehaviour {
     
-    public GameObject main, credits;
+    public GameObject main, credits, camera;
+    public float rotateTime;
 
     private RectTransform arrow;
     private bool scrollBuffer;
     private int arrowPos = 0;
 
+    private Transform cameraTransform;
+    private float timer, radians;
+
     private void Awake() {
         if(credits.activeSelf)
             SwapMenu();
 
+        cameraTransform = camera.transform;
         arrow = transform.GetChild(1).Find("Arrow").GetComponent<RectTransform>();
     }
 
@@ -37,6 +42,17 @@ public class MainMenuManager : MonoBehaviour {
                 ExitGame();
         } else if(credits.activeSelf && Input.GetButtonDown("Back"))
             SwapMenu();
+    }
+
+    private void LateUpdate() {
+        // rotate camera
+        radians = (timer / rotateTime) * 2 * Mathf.PI;
+        cameraTransform.position = new Vector3(Mathf.Cos(radians), 1.25f, Mathf.Sin(radians)) * 10;
+        cameraTransform.LookAt(new Vector3(0, -5f, 0));
+
+        timer += Time.deltaTime;
+        if(timer > rotateTime)
+            timer = 0;
     }
 
     public void SwapMenu() {
