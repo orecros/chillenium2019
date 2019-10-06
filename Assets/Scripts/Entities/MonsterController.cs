@@ -40,4 +40,8 @@ public class MonsterController : FighterController {
     public void DestroyHealthBar() {
         Destroy(healthBar.gameObject);
     }
+
+    public void RemoveMonster() {
+        MonsterSpawner.monsterList.Remove(gameObject);
+    }
 }

@@ -44,8 +44,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monster: {fileID: 1618591224641869415, guid: 5d46c72b30b7fbb478964ff65b34e600, type: 3}
-  waitTime: 10
-  chanceTimer: 5
-  spawnRate: 35
-  initialSpawnAmount: 4
+  waitTime: 1
   spawnPoints: []

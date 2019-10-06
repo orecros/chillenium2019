@@ -95,18 +95,21 @@ public class PlayerController : MonoBehaviour {
                 quitTimer += Time.deltaTime;
                 if(quitTimer > 1) {
                     PlayerManager.player1 = false;
+                    VillagerSpawner.vs.DeleteOnLeave();
                     Destroy(gameObject);
                 }
             } else if(playerNum == 2 && Input.GetButton("Exit2")) { // Player 2
                 quitTimer += Time.deltaTime;
                 if(quitTimer > 1) {
                     PlayerManager.player2 = false;
+                    VillagerSpawner.vs.DeleteOnLeave();
                     Destroy(gameObject);
                 }
             } else if(playerNum == 3 && Input.GetButton("Exit3")) { // Player 3
                 quitTimer += Time.deltaTime;
                 if(quitTimer > 1) {
                     PlayerManager.player3 = false;
+                    VillagerSpawner.vs.DeleteOnLeave();
                     Destroy(gameObject);
                 }
             }

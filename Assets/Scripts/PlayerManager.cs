@@ -10,25 +10,38 @@ public class PlayerManager : MonoBehaviour {
     public GameObject playerPrefab;
     public Vector3 spawnPos;
 
+    private VillagerSpawner villagerSpawner;
+
+    private void Start() {
+        villagerSpawner = VillagerSpawner.vs;
+    }
+
     private void LateUpdate() {
         if(!player1 && Input.GetButtonDown("Act1")) { // Insert player 1
             Instantiate(playerPrefab, spawnPos, Quaternion.identity);
-            playerCount++;
+            AddPlayer();
         } else if(!player2 && Input.GetButtonDown("Act2")) { // Insert player 2
             Instantiate(playerPrefab, spawnPos, Quaternion.identity);
-            playerCount++;
+            AddPlayer();
         } else if(!player3 && Input.GetButtonDown("Act3")) { // Insert player 3
             Instantiate(playerPrefab, spawnPos, Quaternion.identity);
-            playerCount++;
+            AddPlayer();
         }
         if(playerCount > 3 || playerCount < 0)
             Debug.LogError("Player Count is out bounds! Currently at " + playerCount);
+    }
+
+    private void AddPlayer() {
+        playerCount++;
+        if(villagerSpawner != null)
+            villagerSpawner.SpawnOnJoin();
     }
 
     public static void ResetPlayers() {
         player1 = false;
         player2 = false;
         player3 = false;
+        playerCount = 0;
     }
 
 }
