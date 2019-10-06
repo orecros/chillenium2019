@@ -25,6 +25,9 @@ public class PlayerInteract : Interactable {
         base.LateUpdate();
         //Debug.Log(name + " " + playerCount);
         icon.GetComponent<RectTransform>().position = Camera.main.WorldToScreenPoint(transform.position + offset) + new Vector3(0, 12);
+
+        if(health.IsDead())
+            icon.SetActive(false);
     }
 
     protected override void OnTriggerEnter(Collider other) {

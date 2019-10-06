@@ -96,21 +96,21 @@ public class PlayerController : MonoBehaviour {
                 if(quitTimer > 1) {
                     PlayerManager.player1 = false;
                     VillagerSpawner.vs.DeleteOnLeave();
-                    Destroy(gameObject);
+                    GetComponent<HealthController>().DoDeath();
                 }
             } else if(playerNum == 2 && Input.GetButton("Exit2")) { // Player 2
                 quitTimer += Time.deltaTime;
                 if(quitTimer > 1) {
                     PlayerManager.player2 = false;
                     VillagerSpawner.vs.DeleteOnLeave();
-                    Destroy(gameObject);
+                    GetComponent<HealthController>().DoDeath();
                 }
             } else if(playerNum == 3 && Input.GetButton("Exit3")) { // Player 3
                 quitTimer += Time.deltaTime;
                 if(quitTimer > 1) {
                     PlayerManager.player3 = false;
                     VillagerSpawner.vs.DeleteOnLeave();
-                    Destroy(gameObject);
+                    GetComponent<HealthController>().DoDeath();
                 }
             }
         }
@@ -128,7 +128,8 @@ public class PlayerController : MonoBehaviour {
             currentInteract = null;
 
         // Health Bar
-        healthBar.GetComponent<RectTransform>().position = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0, 1.5f));
+        if(!GetComponent<HealthController>().IsDead())
+            healthBar.GetComponent<RectTransform>().position = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0, 1.5f));
         switch(health.Health) {
             case 3:
                 healthBar.sprite = healthBars[2];
@@ -142,6 +143,11 @@ public class PlayerController : MonoBehaviour {
             default:
                 Destroy(healthBar.gameObject);
                 break;
+        }
+
+        if(GetComponent<HealthController>().IsDead()) {
+            healthBar.enabled = false;
+
         }
     }
 
@@ -164,7 +170,8 @@ public class PlayerController : MonoBehaviour {
 
     private void OnDestroy() {
         if(healthBar != null)
-            Destroy(healthBar.gameObject);
+            healthBar.enabled = false;
+            //Destroy(healthBar.gameObject);
         if(playerNum > 0)
             PlayerManager.playerCount--;
     }
