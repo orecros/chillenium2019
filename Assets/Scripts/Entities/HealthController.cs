@@ -35,7 +35,7 @@ public class HealthController : MonoBehaviour
     public void HealDamage(int damage) {
         Health = Mathf.Min(Health + damage, MaxHealth);
 
-        OnHealed.Invoke();
+        OnHealed.Invoke();  
     }
 
     public void DoDeath() {
