@@ -36,7 +36,7 @@ public class MainMenuManager : MonoBehaviour {
 
         if(!credits.activeSelf && (Input.GetButtonDown("Act1") || Input.GetButtonDown("Act2") || Input.GetButtonDown("Act3"))) {
             if(arrowPos == 0)
-                LoadScene("SampleScene");
+                LoadScene("");
             else if(arrowPos == 1)
                SwapMenu();
             else
@@ -70,6 +70,12 @@ public class MainMenuManager : MonoBehaviour {
     }
 
     public void LoadScene(string scene) {
+        PlayerManager.ResetPlayers();
+        PlayerManager.canJoin = true;
+
+        if(scene.Equals("")) {
+            scene = "Field0" + Random.Range(1, 4);
+        }
         SceneManager.LoadScene(scene);
     }
 
