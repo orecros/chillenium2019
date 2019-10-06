@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6949068741225089038}
   - component: {fileID: 4745947365615895520}
   - component: {fileID: 199586654088549679}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Left Eye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -122,7 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 535ddeffefa87274da5567399bd19010, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxDetectionRange: 3
+  MaxDetectionRange: 10
   MinimumInterest: 3
   MaximumInterest: 5
   InterestMultiplier: 1
@@ -154,6 +154,7 @@ GameObject:
   - component: {fileID: 3770701645051918669}
   - component: {fileID: 5390706690820801800}
   - component: {fileID: 4247966043983365135}
+  - component: {fileID: 688447909851152750}
   m_Layer: 10
   m_Name: Villager
   m_TagString: Villager
@@ -233,7 +234,40 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnDeath:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2394743627981745570}
+        m_MethodName: DestroyThis
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 688447909851152750}
+        m_MethodName: MakeCorpse
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3770701645051918669}
+        m_MethodName: DestroyThis
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnHealthChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -275,6 +309,22 @@ MonoBehaviour:
   Solids:
   - {fileID: 7374721663263937788}
   - {fileID: 2510313304131341701}
+--- !u!114 &688447909851152750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4046138390870079388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 446359c0faad5aa4992879228c4390a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BodyMaterial: {fileID: 2100000, guid: 1f27123188eaa4d419bb90a2106af80d, type: 2}
+  solidsList: {fileID: 4247966043983365135}
+  LiquidPrefab: {fileID: 6160023988064111516, guid: 0a0135f54b5e8bb45ba633e695344b4f,
+    type: 3}
 --- !u!114 &2226662503142256581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -319,7 +369,7 @@ GameObject:
   - component: {fileID: 697053503284103984}
   - component: {fileID: 8142162465640952072}
   - component: {fileID: 8554916420717287300}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Right Eye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -492,7 +542,7 @@ PrefabInstance:
     - target: {fileID: -2885538708037666313, guid: c856c7a4069268949b22a025821feeeb,
         type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: -2885538708037666313, guid: c856c7a4069268949b22a025821feeeb,
         type: 3}
@@ -502,7 +552,7 @@ PrefabInstance:
     - target: {fileID: -2254802268455275948, guid: c856c7a4069268949b22a025821feeeb,
         type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: -2254802268455275948, guid: c856c7a4069268949b22a025821feeeb,
         type: 3}
@@ -512,7 +562,7 @@ PrefabInstance:
     - target: {fileID: -1434456685638878187, guid: c856c7a4069268949b22a025821feeeb,
         type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: -1434456685638878187, guid: c856c7a4069268949b22a025821feeeb,
         type: 3}
@@ -559,10 +609,20 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4219029942037012305, guid: c856c7a4069268949b22a025821feeeb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 2139706042660651660, guid: c856c7a4069268949b22a025821feeeb,
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2139706042660651660, guid: c856c7a4069268949b22a025821feeeb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: -8018917998093928251, guid: c856c7a4069268949b22a025821feeeb,
         type: 3}
