@@ -15,10 +15,16 @@ public class VillagerInteract : Interactable {
     }
 
     protected virtual void Update() {
+        Debug.Log(canInteract);
         if(health.AtMax() || beingHealed)
             canInteract = false;
         else
             canInteract = true;
+    }
+
+    protected override void LateUpdate() {
+        base.LateUpdate();
+        icon.GetComponent<RectTransform>().position = Camera.main.WorldToScreenPoint(transform.position + offset);
     }
 
     public override void Interact(GameObject player, int playerNum) {
