@@ -28,6 +28,8 @@ public class GlobalCanvas : MonoBehaviour {
     }
 
     private void Update() {
+        pauseMenu.transform.SetAsLastSibling();
+
         if(GameManager.Paused) {
             if(MaxAbsVerticalInput() > 0.125f) {
                 if(!scrollBuffer) {

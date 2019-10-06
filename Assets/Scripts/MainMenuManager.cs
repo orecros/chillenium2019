@@ -2,15 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenuManager : MonoBehaviour {
     
     public GameObject main, credits, camera;
     public float rotateTime;
-
-    private RectTransform arrow;
+    public UIButton startButton, creditsButton, exitButton;
+    
     private bool scrollBuffer;
-    private int arrowPos = 0;
+    private int arrowPos = 5;
+    public static GameObject selectedButton;
 
     private Transform cameraTransform;
     private float timer, radians;
@@ -20,7 +22,6 @@ public class MainMenuManager : MonoBehaviour {
             SwapMenu();
 
         cameraTransform = camera.transform;
-        arrow = transform.GetChild(1).Find("Arrow").GetComponent<RectTransform>();
     }
 
     private void Update() {
@@ -42,6 +43,9 @@ public class MainMenuManager : MonoBehaviour {
                 ExitGame();
         } else if(credits.activeSelf && Input.GetButtonDown("Back"))
             SwapMenu();
+
+        if(selectedButton != null && (Input.GetButtonDown("Act1") || Input.GetButtonDown("Act2") || Input.GetButtonDown("Act3")))
+            selectedButton.GetComponent<Button>().onClick.Invoke();
     }
 
     private void LateUpdate() {
@@ -85,12 +89,26 @@ public class MainMenuManager : MonoBehaviour {
         else if(arrowPos <= -1)
             arrowPos = 2;
 
-        if(arrowPos == 0)
-            arrow.localPosition = new Vector3(-120f, 15f, 0);
-        else if(arrowPos == 1)
-            arrow.localPosition = new Vector3(-120f, -55f, 0);
+        if(selectedButton != null)
+            selectedButton.GetComponent<UIButton>().OnExit();
+        if(arrowPos == 0) {
+            startButton.OnHover();
+            //creditsButton.OnExit();
+            //exitButton.OnExit();
+        } else if(arrowPos == 1) {
+            //startButton.OnExit();
+            creditsButton.OnHover();
+            //exitButton.OnExit();
+        } else if(arrowPos == 2) {
+            //startButton.OnExit();
+            //creditsButton.OnExit();
+            exitButton.OnHover();
+        }
+
+        /*if(arrowPos == 0)
+            resume.GetComponent<UIButton>().OnHover();
         else
-            arrow.localPosition = new Vector3(-120f, -125f, 0);
+            mainMenu.GetComponent<UIButton>().OnHover();*/
     }
 
     private float MaxAbsVerticalInput() {
