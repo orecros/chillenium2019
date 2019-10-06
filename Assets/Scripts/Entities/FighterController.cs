@@ -15,8 +15,6 @@ public abstract class FighterController : MonoBehaviour {
         set {
             if (value == fighterState) return;
 
-            print(gameObject.name + " " + value);
-
             if (value == State.Navigating) {
                 //navMeshAgent.updatePosition = true;
                 //navMeshAgent.updateRotation = true;

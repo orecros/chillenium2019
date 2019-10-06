@@ -568,8 +568,7 @@ PrefabInstance:
     - target: {fileID: 5306015231698740102, guid: 461fa970e4bc26845b87445f7ab2a0eb,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5306015231698740102, guid: 461fa970e4bc26845b87445f7ab2a0eb,
         type: 3}
@@ -1504,7 +1503,7 @@ PrefabInstance:
     - target: {fileID: 5306015231698740102, guid: 461fa970e4bc26845b87445f7ab2a0eb,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5306015231698740102, guid: 461fa970e4bc26845b87445f7ab2a0eb,
         type: 3}
@@ -1551,10 +1550,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2032799605}
-  - {fileID: 1926299522}
   - {fileID: 528118075}
   - {fileID: 1511815607}
   - {fileID: 109924596}
+  - {fileID: 1926299522}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1613,7 +1612,7 @@ PrefabInstance:
     - target: {fileID: 5306015231698740102, guid: 461fa970e4bc26845b87445f7ab2a0eb,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5306015231698740102, guid: 461fa970e4bc26845b87445f7ab2a0eb,
         type: 3}
@@ -1693,7 +1692,7 @@ PrefabInstance:
     - target: {fileID: 5306015231698740102, guid: 461fa970e4bc26845b87445f7ab2a0eb,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5306015231698740102, guid: 461fa970e4bc26845b87445f7ab2a0eb,
         type: 3}
@@ -2052,6 +2051,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Villager Spawner
       objectReference: {fileID: 0}
+    - target: {fileID: 597909688959161210, guid: 07ecbe7595b4af649a959a1be94d2501,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 597909688959161208, guid: 07ecbe7595b4af649a959a1be94d2501,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2090,7 +2094,7 @@ PrefabInstance:
     - target: {fileID: 597909688959161208, guid: 07ecbe7595b4af649a959a1be94d2501,
         type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 597909688959161208, guid: 07ecbe7595b4af649a959a1be94d2501,
         type: 3}
@@ -2121,6 +2125,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Monster Spawner
       objectReference: {fileID: 0}
+    - target: {fileID: 4485834084945428528, guid: f73bc4b5869fb0c4a841789a9ed2667b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4485834084945428526, guid: f73bc4b5869fb0c4a841789a9ed2667b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2159,7 +2168,7 @@ PrefabInstance:
     - target: {fileID: 4485834084945428526, guid: f73bc4b5869fb0c4a841789a9ed2667b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4485834084945428526, guid: f73bc4b5869fb0c4a841789a9ed2667b,
         type: 3}

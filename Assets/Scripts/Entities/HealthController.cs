@@ -5,6 +5,9 @@ using UnityEngine.Events;
 
 public class HealthController : MonoBehaviour
 {
+    public UnityEvent OnHurt;
+    public UnityEvent OnHealed;
+
     public UnityEvent OnDeath;
     [HideInInspector] public UnityEvent OnHealthChanged;
 
@@ -24,10 +27,15 @@ public class HealthController : MonoBehaviour
         if(Health <= 0) {
             DoDeath();
         }
+        else {
+            OnHurt.Invoke();
+        }
     }
 
     public void HealDamage(int damage) {
         Health = Mathf.Min(Health + damage, MaxHealth);
+
+        OnHealed.Invoke();
     }
 
     public void DoDeath() {
