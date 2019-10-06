@@ -4,18 +4,30 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
 
-public class MonsterController : FighterController {
+public class MonsterController : FighterController
+{
+    public Vector3 home = Vector3.zero;
+    protected override void Update() {
+        base.Update();
+        if (CurrentTarget == null) {
+            navMeshAgent.SetDestination(home);
+        }
+    }
 
-    public GameObject healthBarPrefab;
-    public Sprite[] healthBars = new Sprite[2];
-    private Image healthBar;
-    private HealthController health;
 
     protected void Start() {
         // Health Bar
         health = GetComponent<HealthController>();
         healthBar = Instantiate(healthBarPrefab, Camera.main.WorldToScreenPoint(transform.position + new Vector3(0, 1.5f)), Quaternion.identity, GlobalCanvas.canvas.transform).GetComponent<Image>();
     }
+
+
+
+
+
+
+
+
 
     protected void LateUpdate() {
         // Health Bar

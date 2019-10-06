@@ -63,8 +63,8 @@ public class PlayerController : MonoBehaviour {
         }
 
         // Remove objects that you can't interact with
-        for(int i = 0; i < interactInRange.Count && interactInRange[i] != null; i++)
-            if(!interactInRange[i].GetComponent<Interactable>().canInteract)
+        for(int i = 0; i < interactInRange.Count; i++)
+            if(interactInRange[i] == null || !interactInRange[i].GetComponent<Interactable>().canInteract)
                 interactInRange.RemoveAt(i);
 
         // Animations

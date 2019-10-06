@@ -76,10 +76,6 @@ public abstract class FighterController : MonoBehaviour {
             currentTarget = value;
         }
     }
-    /// <summary>
-    /// how interested our monster is in this target
-    /// </summary>
-    float currentInterestLevel = 0;
 
     protected NavMeshAgent navMeshAgent;
     CharacterController characterController;
@@ -214,22 +210,18 @@ public abstract class FighterController : MonoBehaviour {
         }
 
         nextTargetAcquiusitionQuery = Time.time + targetAcquisitionInterval;
-
-        // if our current best target was destroyed, make sure we're looking for ANY replacement target
-        if (CurrentTarget == null) currentInterestLevel = 0;
-
-        Target newTarget = FindTarget(CurrentTarget, currentInterestLevel);
+        
+        Target newTarget = FindTarget(CurrentTarget);
         if (newTarget != null) {
             if (newTarget != CurrentTarget) {
 
-                currentInterestLevel += newTarget.CalculateInterestLevel(transform.position);
                 CurrentTarget = newTarget;
             }
             
             navMeshAgent.destination = CurrentTarget.transform.position;
         }
     }
-    protected abstract Target FindTarget(Target CurrentTarget, float currentInterestLevel);
+    protected abstract Target FindTarget(Target CurrentTarget);
     void AimTowards(Vector3 targetPoint) {
         transform.rotation = Quaternion.LookRotation(targetPoint - transform.position, Vector3.up);
     }
