@@ -86,19 +86,10 @@ public class GlobalCanvas : MonoBehaviour {
     public IEnumerator GameOver() {
         arrowPos = 5;
         yield return new WaitForSeconds(1f);
-
-        //List<Image> images = new List<Image>();
-        Image[] images = gameOverScreen.GetComponentsInChildren<Image>();
-        for(int i = 0; i < images.Length; i++)
-            images[i].color = new Color32(255, 255, 255, 0);
+        
         gameOverScreen.SetActive(true);
-
-        for(int i = 0; i < 255; i += 5) {
-            gameOverScreen.transform.SetAsLastSibling();
-            for(int j = 0; j < images.Length; j++)
-                images[j].color += new Color32(0, 0, 0, 5);
-            yield return new WaitForSeconds(0.05f);
-        }
+        gameOverScreen.GetComponent<Animator>().SetTrigger("Activate");
+        
         while(true) {
             gameOverScreen.transform.SetAsLastSibling();
             yield return null;
