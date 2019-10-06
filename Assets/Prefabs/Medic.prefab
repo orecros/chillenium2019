@@ -32,6 +32,7 @@ GameObject:
   - component: {fileID: 2786106013496173824}
   - component: {fileID: 5179445997728429953}
   - component: {fileID: 1363205989852318083}
+  - component: {fileID: 3143820217318479727}
   m_Layer: 0
   m_Name: Medic
   m_TagString: Player
@@ -123,6 +124,7 @@ MonoBehaviour:
   solidsList: {fileID: 2786106013496173824}
   LiquidPrefab: {fileID: 6160023988064111516, guid: 0a0135f54b5e8bb45ba633e695344b4f,
     type: 3}
+  DeathSound: {fileID: 0}
 --- !u!114 &2786106013496173824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,6 +170,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 228a0274e4a1fc245b99aa7b610ce44b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnHurt:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHealed:
+    m_PersistentCalls:
+      m_Calls: []
   OnDeath:
     m_PersistentCalls:
       m_Calls:
@@ -204,11 +212,46 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 3143820217318479727}
+        m_MethodName: DestroyHealthBar
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnHealthChanged:
     m_PersistentCalls:
       m_Calls: []
   MaxHealth: 3
   health: 3
+--- !u!114 &3143820217318479727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7623390560638246676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e7bb1990fa9a9e4f835e8ca94b2af7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  iconPrefab: {fileID: 3633524236573020252, guid: 683d789e3995a014484f74e24aa45b4b,
+    type: 3}
+  offset: {x: 0, y: 0, z: 0}
+  canInteract: 0
+  selected: 0
+  playerCount: 0
+  healthBarPrefab: {fileID: 5512496416199433027, guid: c424702e3709c60418793b64e575fb64,
+    type: 3}
+  healthBars:
+  - {fileID: 21300000, guid: 14b307b449374b940991153ea787edaa, type: 3}
+  - {fileID: 21300000, guid: 4cc0a712036ce774daa868a2c6abc771, type: 3}
+  - {fileID: 21300000, guid: 15dabaa12225ae84f9e0d89e266d2c21, type: 3}
 --- !u!1001 &606750345011721339
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -328,11 +371,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Medic
       objectReference: {fileID: 0}
-    - target: {fileID: -5950932721581815015, guid: 6cdda62e41238714da9d0d210af54905,
+    - target: {fileID: 5130276663628583828, guid: 6cdda62e41238714da9d0d210af54905,
         type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 21dd82fdd8885724ab9876f72191cb56, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5130276663628583828, guid: 6cdda62e41238714da9d0d210af54905,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: -5688294212379169206, guid: 6cdda62e41238714da9d0d210af54905,
         type: 3}
       propertyPath: m_Layer
@@ -393,22 +441,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1745447579936222232, guid: 6cdda62e41238714da9d0d210af54905,
+    - target: {fileID: -5950932721581815015, guid: 6cdda62e41238714da9d0d210af54905,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 21dd82fdd8885724ab9876f72191cb56, type: 2}
+    - target: {fileID: -7434254994688564696, guid: 6cdda62e41238714da9d0d210af54905,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7434254994688564696, guid: 6cdda62e41238714da9d0d210af54905,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b25d1183a92374145a2472de7e0f4cf4, type: 2}
+    - target: {fileID: 3970871132311529392, guid: 6cdda62e41238714da9d0d210af54905,
         type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1745447579936222232, guid: 6cdda62e41238714da9d0d210af54905,
+    - target: {fileID: 3970871132311529392, guid: 6cdda62e41238714da9d0d210af54905,
         type: 3}
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
-    - target: {fileID: 3970871132311529392, guid: 6cdda62e41238714da9d0d210af54905,
+    - target: {fileID: 1745447579936222232, guid: 6cdda62e41238714da9d0d210af54905,
         type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3970871132311529392, guid: 6cdda62e41238714da9d0d210af54905,
+    - target: {fileID: 1745447579936222232, guid: 6cdda62e41238714da9d0d210af54905,
         type: 3}
       propertyPath: m_Layer
       value: 9
@@ -433,26 +496,6 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: ac0909b361cb4f844bc17e200879e7ab, type: 2}
-    - target: {fileID: 5130276663628583828, guid: 6cdda62e41238714da9d0d210af54905,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5130276663628583828, guid: 6cdda62e41238714da9d0d210af54905,
-        type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: -7434254994688564696, guid: 6cdda62e41238714da9d0d210af54905,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -7434254994688564696, guid: 6cdda62e41238714da9d0d210af54905,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: b25d1183a92374145a2472de7e0f4cf4, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6cdda62e41238714da9d0d210af54905, type: 3}
 --- !u!1 &654684324101395276 stripped

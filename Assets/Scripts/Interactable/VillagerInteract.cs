@@ -66,4 +66,8 @@ public class VillagerInteract : Interactable {
         //Debug.Log("Done healing.");
     }
 
+    public void DestroyHealthBar() {
+        Destroy(healthBar.gameObject);
+    }
+
 }
