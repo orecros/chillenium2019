@@ -41,4 +41,8 @@ public class HealthController : MonoBehaviour
     public int DamageAmount() {
         return MaxHealth - Health;
     }
+
+    public void DestroyThis() {
+        Destroy(gameObject);
+    }
 }

@@ -18,15 +18,13 @@ public class PlayerController : MonoBehaviour {
     //private bool interactBuffer;
     [HideInInspector] public bool canAct;
 
-    private GameObject syringe, hammer;
+    public GameObject syringe, hammer;
 
     private void Awake() {
         // Set variables
         controller = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
         canAct = true;
-        syringe = transform.GetChild(1).gameObject;
-        hammer = transform.GetChild(2).gameObject;
 
         // Get player number
         if(!PlayerManager.player1) {
