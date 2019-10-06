@@ -15,8 +15,8 @@ public class MonsterSpawner : MonoBehaviour {
 
     private void Start() {
         Instance = this;
-        for(int i = 0; i < initialSpawnAmount; i++)
-            SpawnMonster();
+        for(int i = 0; i < spawnPoints.Count; i++)
+            SpawnMonster(i);
         StartCoroutine(Spawning());
     }
 

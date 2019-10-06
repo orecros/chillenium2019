@@ -8,7 +8,7 @@ public class GlobalCanvas : MonoBehaviour {
     public static GameObject canvas;
     public static GameObject selectedButton;
 
-    public GameObject pauseMenu, resume, mainMenu;
+    public GameObject pauseMenu, resume, mainMenu, gameOver;
     
     //private RectTransform arrow;
     private bool scrollBuffer;
@@ -72,6 +72,12 @@ public class GlobalCanvas : MonoBehaviour {
 
     private int GetScrollDir() {
         return (int)Mathf.Sign(Input.GetAxis("Vertical1") + Input.GetAxis("Vertical2") + Input.GetAxis("Vertical3"));
+    }
+
+    public IEnumerator GameOver() {
+        yield return null;
+
+
     }
 
 }

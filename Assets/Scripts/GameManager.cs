@@ -89,9 +89,11 @@ public class GameManager : MonoBehaviour {
 
     public void DoDefeat() {
         print("the players lose :(");
-        MonsterSpawner.Instance.chanceTimer = 0.5f;
-        MonsterSpawner.Instance.spawnRate = 100f;
+        if(Paused)
+            Paused = false;
+        //MonsterSpawner.Instance.chanceTimer = 0.5f;
+        //MonsterSpawner.Instance.spawnRate = 100f;
 
-
+        StartCoroutine(GlobalCanvas.canvas.GetComponent<GlobalCanvas>().GameOver());
     }
 }
