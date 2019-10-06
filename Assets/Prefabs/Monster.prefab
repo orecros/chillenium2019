@@ -341,8 +341,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxDetectionRange: 10
-  MinimumInterest: 1
-  MaximumInterest: 2
+  MinimumInterest: 2
+  MaximumInterest: 3
   InterestMultiplier: 1
   healthController: {fileID: 1874790893546543286}
 --- !u!135 &8532025713971108122

@@ -15,19 +15,24 @@ public abstract class FighterController : MonoBehaviour {
         set {
             if (value == fighterState) return;
 
+            print(gameObject.name + " " + value);
+
             if (value == State.Navigating) {
                 //navMeshAgent.updatePosition = true;
                 //navMeshAgent.updateRotation = true;
+                navMeshAgent.isStopped = false;
             }
             else if (value == State.Attacking) {
                 animator.SetBool("Moving", false);
-                nextAttackTime = Time.time + attackDelay;
+                navMeshAgent.velocity = Vector3.zero;
+                navMeshAgent.isStopped = true;
             }
 
             if (fighterState == State.Navigating) {
                 //navMeshAgent.updatePosition = false;
                 //navMeshAgent.updateRotation = false;
                 //manualVelocity = navMeshAgent.velocity;
+                navMeshAgent.isStopped = false;
             }
 
 
@@ -52,34 +57,51 @@ public abstract class FighterController : MonoBehaviour {
     /// the next time at which to attempt to acquire a new target
     /// </summary>
     float nextTargetAcquiusitionQuery;
+
+    Target currentTarget = null;
     /// <summary>
     /// our current target
     /// </summary>
-    Target currentTarget = null;
+    [HideInInspector]
+    public Target CurrentTarget {
+        get { return currentTarget; }
+        set {
+            if (currentTarget == value) return;
+            if (currentTarget != null) {
+                currentTarget.OnUnTargetted();
+            }
+
+            if (value != null) {
+                value.OnTargetted();
+            }
+
+            currentTarget = value;
+        }
+    }
     /// <summary>
     /// how interested our monster is in this target
     /// </summary>
     float currentInterestLevel = 0;
 
-    NavMeshAgent navMeshAgent;
+    protected NavMeshAgent navMeshAgent;
     CharacterController characterController;
 
     public Animator animator;
 
     // Start is called before the first frame update
-    void Awake() {
+    protected virtual void Awake() {
         navMeshAgent = GetComponent<NavMeshAgent>();
         characterController = GetComponent<CharacterController>();
         AcquireNewTarget();
     }
 
     public void OnEnterApproachRegion(Target target) {
-        if (target != currentTarget) return;
+        if (target != CurrentTarget) return;
 
         FighterState = State.Approaching;
     }
 
-    private void Update() {
+    protected virtual void Update() {
         
         // state machine
         if (FighterState == State.Navigating) {
@@ -101,18 +123,18 @@ public abstract class FighterController : MonoBehaviour {
         }
     }
     void DoStateNavigating() {
-        if (nextTargetAcquiusitionQuery < Time.time || currentTarget == null) {
+        if (nextTargetAcquiusitionQuery < Time.time || CurrentTarget == null) {
             AcquireNewTarget();
         }
 
-        if(currentTarget != null && GetDistanceToTarget() < approachRange) {
+        if(CurrentTarget != null && GetDistanceToTarget() < approachRange) {
             FighterState = State.Approaching;
         }
     }
     void DoStateApproaching() {
 
         // if our target is invalid 
-        if (currentTarget == null) {
+        if (CurrentTarget == null) {
 
             // go back to navigating
             FighterState = State.Navigating;
@@ -135,7 +157,7 @@ public abstract class FighterController : MonoBehaviour {
         DoManualVelocityAdjustment();
 
         // look at our target
-        AimTowards(currentTarget.transform.position);
+        AimTowards(CurrentTarget.transform.position);
 
         // move towards our target
         characterController.Move(manualVelocity * Time.deltaTime);
@@ -149,7 +171,7 @@ public abstract class FighterController : MonoBehaviour {
     void DoStateAttacking() {
 
         // if our target is invalid go back to navigating
-        if (currentTarget == null) {
+        if (CurrentTarget == null) {
             FighterState = State.Navigating;
             return;
         }
@@ -162,7 +184,7 @@ public abstract class FighterController : MonoBehaviour {
         }
 
         // look at our target
-        AimTowards(currentTarget.transform.position);
+        AimTowards(CurrentTarget.transform.position);
 
         // if we are too far from our target to attack,
         if (GetDistanceToTarget() > attackRange) {
@@ -176,10 +198,10 @@ public abstract class FighterController : MonoBehaviour {
         animator.SetTrigger("Attack");
         nextAttackTime = Time.time + attackDelay;
 
-        StartCoroutine(DealDamageDelayed(currentTarget, attackDamage, attackApplicationDelay));
+        StartCoroutine(DealDamageDelayed(CurrentTarget, attackDamage, attackApplicationDelay));
     }
     void DoManualVelocityAdjustment() {
-        Vector3 direction = (currentTarget.transform.position - transform.position).normalized;
+        Vector3 direction = (CurrentTarget.transform.position - transform.position).normalized;
 
         // accelerate towards our max velocity using the values in our navmeshagent
         manualVelocity = Vector3.MoveTowards(manualVelocity, direction * navMeshAgent.speed, navMeshAgent.acceleration * Time.deltaTime);
@@ -196,24 +218,25 @@ public abstract class FighterController : MonoBehaviour {
         nextTargetAcquiusitionQuery = Time.time + targetAcquisitionInterval;
 
         // if our current best target was destroyed, make sure we're looking for ANY replacement target
-        if (currentTarget == null) currentInterestLevel = 0;
+        if (CurrentTarget == null) currentInterestLevel = 0;
 
-        Target newTarget = FindTarget(currentTarget, currentInterestLevel);
+        Target newTarget = FindTarget(CurrentTarget, currentInterestLevel);
         if (newTarget != null) {
-            if (newTarget != currentTarget) {
+            if (newTarget != CurrentTarget) {
+
                 currentInterestLevel += newTarget.CalculateInterestLevel(transform.position);
-                currentTarget = newTarget;
+                CurrentTarget = newTarget;
             }
             
-            navMeshAgent.destination = currentTarget.transform.position;
+            navMeshAgent.destination = CurrentTarget.transform.position;
         }
     }
-    protected abstract Target FindTarget(Target currentTarget, float currentInterestLevel);
+    protected abstract Target FindTarget(Target CurrentTarget, float currentInterestLevel);
     void AimTowards(Vector3 targetPoint) {
         transform.rotation = Quaternion.LookRotation(targetPoint - transform.position, Vector3.up);
     }
     float GetDistanceToTarget() {
-        return Vector3.Distance(currentTarget.transform.position, transform.position);
+        return Vector3.Distance(CurrentTarget.transform.position, transform.position);
     }
 
     IEnumerator DealDamageDelayed(Target target, int Damage, float Delay) {
