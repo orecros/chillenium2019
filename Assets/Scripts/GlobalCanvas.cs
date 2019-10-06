@@ -1,14 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GlobalCanvas : MonoBehaviour {
 
     public static GameObject canvas;
+    public static GameObject selectedButton;
 
-    public GameObject pauseMenu;
+    public GameObject pauseMenu, resume, mainMenu;
     
-    private RectTransform arrow;
+    //private RectTransform arrow;
     private bool scrollBuffer;
     private int arrowPos = 0;
 
@@ -17,7 +19,9 @@ public class GlobalCanvas : MonoBehaviour {
         try {
             if(pauseMenu == null)
                 pauseMenu = transform.Find("Pause Menu").gameObject;
-            arrow = pauseMenu.transform.Find("Arrow").GetComponent<RectTransform>();
+            //arrow = pauseMenu.transform.Find("Arrow").GetComponent<RectTransform>();
+            resume = pauseMenu.transform.Find("Resume").gameObject;
+            mainMenu = pauseMenu.transform.Find("Main Menu").gameObject;
         } catch {
             Debug.LogError("No pause menu found in canvas!");
         }
@@ -34,12 +38,8 @@ public class GlobalCanvas : MonoBehaviour {
             } else
                 scrollBuffer = false;
 
-            if(Input.GetButtonDown("Act1") || Input.GetButtonDown("Act2") || Input.GetButtonDown("Act3")) {
-                if(arrowPos == 0)
-                    GameManager.Paused = false;
-                else 
-                    GameManager.LoadSceneStatic("MainMenu");
-            }
+            if(selectedButton != null && (Input.GetButtonDown("Act1") || Input.GetButtonDown("Act2") || Input.GetButtonDown("Act3")))
+                selectedButton.GetComponent<Button>().onClick.Invoke();
         }
     }
 
@@ -55,10 +55,12 @@ public class GlobalCanvas : MonoBehaviour {
         else if(arrowPos <= -1)
             arrowPos = 1;
 
+        if(selectedButton != null)
+            selectedButton.GetComponent<UIButton>().OnExit();
         if(arrowPos == 0)
-            arrow.localPosition = new Vector3(-125f, -10f, 0);
+            resume.GetComponent<UIButton>().OnHover();
         else
-            arrow.localPosition = new Vector3(-125f, -55f, 0);
+            mainMenu.GetComponent<UIButton>().OnHover();
     }
 
     private float MaxAbsVerticalInput() {
