@@ -1,17 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class VillagerInteract : Interactable {
     
     public static float healTime = 1f;
 
+    public GameObject healthBarPrefab;
+    public Sprite[] healthBars = new Sprite[3];
+
+    private Image healthBar;
     private HealthController health;
     private bool beingHealed;
 
     protected override void Start() {
         base.Start();
         health = GetComponent<HealthController>();
+        healthBar = Instantiate(healthBarPrefab, Camera.main.WorldToScreenPoint(transform.position + new Vector3(0, 1.5f)), Quaternion.identity, GlobalCanvas.canvas.transform).GetComponent<Image>();
     }
 
     protected virtual void Update() {
@@ -24,6 +30,22 @@ public class VillagerInteract : Interactable {
     protected override void LateUpdate() {
         base.LateUpdate();
         icon.GetComponent<RectTransform>().position = Camera.main.WorldToScreenPoint(transform.position + offset);
+
+        healthBar.GetComponent<RectTransform>().position = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0, 1.5f));
+        switch(health.Health) {
+            case 3:
+                healthBar.sprite = healthBars[2];
+                break;
+            case 2:
+                healthBar.sprite = healthBars[1];
+                break;
+            case 1:
+                healthBar.sprite = healthBars[0];
+                break;
+            default:
+                Destroy(healthBar.gameObject);
+                break;
+        }
     }
 
     public override void Interact(GameObject player, int playerNum) {

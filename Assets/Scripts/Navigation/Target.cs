@@ -18,7 +18,7 @@ public abstract class Target : MonoBehaviour
     /// <summary>
     /// the interest level this object has at its closest distance
     /// </summary>
-    public float MaximumInterest = 2;
+    public float MaximumInterest = 3;
 
     /// <summary>
     /// What multiplier to put on the entity's interest
@@ -46,5 +46,13 @@ public abstract class Target : MonoBehaviour
         Gizmos.color = Color.green;
         Mesh m = Resources.Load<Mesh>("Gizmos/circle");
         Gizmos.DrawWireMesh(m,transform.position,transform.rotation,Vector3.one * MaxDetectionRange);
+    }
+
+    public void OnTargetted() {
+        InterestMultiplier /= 2;
+    }
+
+    public void OnUnTargetted() {
+        InterestMultiplier *= 2;
     }
 }

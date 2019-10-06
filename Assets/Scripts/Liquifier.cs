@@ -7,6 +7,7 @@ public class Liquifier : MonoBehaviour
     public Material BodyMaterial;
     public SolidsList solidsList;
     public GameObject LiquidPrefab;
+    public AudioClip DeathSound;
 
     public void MakeCorpse() {
         // make our corpse empty
@@ -19,6 +20,11 @@ public class Liquifier : MonoBehaviour
 
         // create our liquid prefab and add as child
         GameObject liquidObject = Instantiate(LiquidPrefab, corpse.transform, true);
+
+        // set the death sound
+        AudioSource a = liquidObject.GetComponent<AudioSource>();
+        a.clip = DeathSound;
+        a.Play();
 
         // snap our liquid prefab onto the ground
         RaycastHit hitInfo;
