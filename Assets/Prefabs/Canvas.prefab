@@ -119,6 +119,25 @@ MonoBehaviour:
   gameOverScreen: {fileID: 516997795440893906}
   startOver: {fileID: 516997794984068079}
   quit: {fileID: 516997794825850261}
+--- !u!95 &1472231987
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 516997795440893906}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 334d4ec729ba90d4f986c6c70b4eb3bb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &516997795398944406
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -302,11 +321,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Game Over
       objectReference: {fileID: 0}
-    - target: {fileID: 8867730445682229664, guid: 0a992c810ca22754caf50cf2446823c9,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8867730445682229663, guid: 0a992c810ca22754caf50cf2446823c9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -411,6 +425,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8867730445071356899, guid: 0a992c810ca22754caf50cf2446823c9,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8867730445224893848, guid: 0a992c810ca22754caf50cf2446823c9,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8867730445790479881, guid: 0a992c810ca22754caf50cf2446823c9,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a992c810ca22754caf50cf2446823c9, type: 3}
