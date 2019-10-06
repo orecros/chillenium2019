@@ -151,6 +151,11 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
+    private void OnTriggerStay(Collider other) {
+        if(other.CompareTag("Interactable") && !other.GetComponent<HealthController>().AtMax() && !interactInRange.Contains(other.gameObject))
+            interactInRange.Add(other.gameObject);
+    }
+
     private void OnTriggerExit(Collider other) {
         if(other.CompareTag("Interactable") || other.CompareTag("Villager") || (other.CompareTag("Player") && other.gameObject != gameObject)) {
             interactInRange.Remove(other.gameObject);
